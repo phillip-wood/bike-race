@@ -31,9 +31,9 @@ bike image? null initially
 
 
 #### event
-id
-event_name
-description
+id\
+event_name\
+description\
 start_point [lat, long]
 end_point null
 start date/time(epoch)
