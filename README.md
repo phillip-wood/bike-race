@@ -1,6 +1,8 @@
 # Bike Race
 ## Getting Started
 
+#### create branch, eg feature/something before working!
+
 ### User Stories
 - as a user, I want to be able to visit the app, and view and join a list of organised bike races
 
