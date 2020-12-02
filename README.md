@@ -26,7 +26,7 @@ username\
 email\
 profile picture\
 number events attended\
-bike type\
+bike_type\ dropdown list
 bike image? null initially\
 
 
@@ -39,7 +39,7 @@ end_point null\
 start date/time(epoch)\
 max group size\
 distance\
-comments []\
+user_id\
 
 
 #### users_events
