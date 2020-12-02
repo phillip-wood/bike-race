@@ -21,43 +21,43 @@
 ### DB structure
 
 #### user
-id
-username
-email
-profile picture
-number events attended
-bike type
-bike image? null initially
+id\
+username\
+email\
+profile picture\
+number events attended\
+bike type\
+bike image? null initially\
 
 
 #### event
 id\
 event_name\
 description\
-start_point [lat, long]
-end_point null
-start date/time(epoch)
-max group size
-distance
-comments []
+start_point [lat, long]\
+end_point null\
+start date/time(epoch)\
+max group size\
+distance\
+comments []\
 
 
 #### users_events
-id
-user_id
-event_id
+id\
+user_id\
+event_id\
 
 
 #### comments
-id
-username
-comment
-event_id
+id\
+username\
+comment\
+event_id\
 
 ### stretches
 
-event categories
-editing events? notifying other members
-i want to be able to pick an endpoint on a map, and be given the path, distance and estimated duration of the bike race
-enable comments on events
-convert to progressive web app 
+event categories\
+editing events? notifying other members\
+i want to be able to pick an endpoint on a map, and be given the path, distance and estimated duration of the bike race\
+enable comments on events\
+convert to progressive web app \
