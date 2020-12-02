@@ -1,29 +1,63 @@
-# Fullstack boilerplate
-
+# Bike Race
 ## Getting Started
 
-### From the Github UI
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
+### User Stories
+- as a user, I want to be able to visit the app, and view and join a list of organised bike races
 
-### From the command line
+- as a user, I want to be able to create a new bike race, with a given start point and end point, at a given time
 
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
+- i want to be able to view the profiles of the attending members of any organised bike race
 
-You can find the server running on [http://localhost:3000](http://localhost:3000).
+- i want to be able to withdraw from an event i have signed up from
 
-## Details
+- i want to be able to create a profile and update my user profile
 
-This repo includes:
+- i want to be able to view all races I have currently signed up to
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Jest and Enzyme (including JSDOM)
-* configuration for server-side debugging in VS Code
-* a single client-side test (`client/components/App.test.js`)
+- be able to view events i have attended in the past
+
+- be able to pick a point on a map as my start point.
+
+### DB structure
+
+#### user
+id
+username
+email
+profile picture
+number events attended
+bike type
+bike image? null initially
+
+
+#### event
+id
+event_name
+description
+start_point [lat, long]
+end_point null
+start date/time(epoch)
+max group size
+distance
+comments []
+
+
+#### users_events
+id
+user_id
+event_id
+
+
+#### comments
+id
+username
+comment
+event_id
+
+### stretches
+
+event categories
+editing events? notifying other members
+i want to be able to pick an endpoint on a map, and be given the path, distance and estimated duration of the bike race
+enable comments on events
+convert to progressive web app 
