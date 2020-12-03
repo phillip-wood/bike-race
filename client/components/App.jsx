@@ -9,7 +9,8 @@ import Navbar from './Navbar'
 import EventDetails from './EventDetails'
 import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
-import EventDetails from './EventDetails'
+
+
 
 
 export class App extends React.Component {
@@ -28,6 +29,7 @@ export class App extends React.Component {
           <Route exact path='/events/:id' component={EventDetails} />
           <Route exact path='/users/active' component={UserProfile} />
           <Route exact path='/users/new' component= {CreateUser} />
+       
         </Switch>
       </Router>
       </>
