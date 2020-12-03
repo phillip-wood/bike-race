@@ -6,7 +6,7 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
-import { EventDetails } from './EventDetails'
+import EventDetails  from './EventDetails'
 
 
 export class App extends React.Component {
