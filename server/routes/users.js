@@ -11,6 +11,15 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  return db.addUser(req.body)
+    .then(ids => res.json(ids[0]))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
+})
+
 
 
 module.exports = router
