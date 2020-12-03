@@ -12,10 +12,16 @@ router.get('/', (req, res) => {
     })
     .then(() => db.getComments())
     .then(comments => {
-      console.log(comments)
       events.forEach(event => {
-        const newArr = comments.filter(comment => comment.event_id === event.id)
-        event.comments = newArr
+      event.comments = comments.filter(comment => comment.event_id === event.id)
+      })
+      return events
+    })
+    .then(() => db.getAttendees())
+    .then(arr => {
+      events.forEach(event => {
+        const attendeesArr = arr.filter(id => id.event_id === event.id)
+        event.attendees = attendeesArr.map(item => item.id)
       })
       return events
     })
@@ -25,6 +31,5 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
-
 
 module.exports = router
