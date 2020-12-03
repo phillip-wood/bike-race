@@ -6,8 +6,10 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
+import EventDetails from './EventDetails'
+import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
-import { EventDetails } from './EventDetails'
+import EventDetails from './EventDetails'
 
 
 export class App extends React.Component {
@@ -20,11 +22,12 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar />
+        <Navbar/>
         <Switch>
-          <Route path='/' exact component= {Home} />
-          <Route path='/users/new' component= {CreateUser} />
-          <Route path='/events/:id' exact component= {EventDetails} />
+          <Route exact path='/' component= {Home} />
+          <Route exact path='/events/:id' component={EventDetails} />
+          <Route exact path='/users/active' component={UserProfile} />
+          <Route exact path='/users/new' component= {CreateUser} />
         </Switch>
       </Router>
       </>
