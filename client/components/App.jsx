@@ -24,7 +24,7 @@ export class App extends React.Component {
         <Switch>
           <Route path='/' exact component= {Home} />
           <Route path='/events/:id' exact component= {EventDetails} />
-          <Route path='/eventsPage' exact component= {Events} />
+          <Route exact path='/events' component= {Events} />
         </Switch>
       </Router>
       </>
