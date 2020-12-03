@@ -4,6 +4,7 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './Home'
 import Navbar from './Navbar'
+import CreateUser from './CreateUser'
 
 
 export class App extends React.Component {
@@ -18,6 +19,7 @@ export class App extends React.Component {
         <Navbar />
         <Switch>
           <Route path='/' exact component= {Home} />
+          <Route path='/users/new' component= {CreateUser} />
         </Switch>
       </Router>
       </>
