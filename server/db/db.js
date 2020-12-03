@@ -12,10 +12,15 @@ function getAttendees (db = connection) {
   return db('users_events').select()
 }
 
+function getUsers (db = connection) {
+  return db('users').select()
+}
+
 
 
 module.exports = {
   getEvents,
   getComments,
   getAttendees,
+  getUsers,
 }

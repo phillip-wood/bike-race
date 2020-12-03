@@ -1,4 +1,4 @@
-import { SET_EVENTS } from "../actions"
+import { SET_EVENTS } from "../actions/events"
 
 const reducer = (state = [], action) => {
   switch (action.type) {
