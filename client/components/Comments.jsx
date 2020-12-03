@@ -1,28 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-export class Comments extends React.Component {
+class Comments extends React.Component {
 
-    render () {
+  render() {
+    return (
+      <>
+      <h1 className='title'>Comments</h1>
 
-        console.log(this.props.events)
-
-      return (
-        <>
-          <h3>Comments</h3>
-          {/* {this.props.events.map(event => {
-            return(
-                <p>test</p>
-            )
-          })} */}
-        </>
-      )
-    }
+      <ul>
+      {this.props.comments.map( comments => {
+        return (
+          <li><p>{comments.comment}</p></li>
+        )
+      })}
+      </ul>
+      </>
+    )
   }
-  
-  function mapStateToProps (globalState) {
+}
+function mapStateToProps (globalState) {
     return {
-      events: globalState.events
+      comments: globalState.comments,
+
     }
   }
   

@@ -6,9 +6,12 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
-import { EventDetails } from './EventDetails'
 import Events from './Events'
-import { Comments } from './Comments'
+import Comments from './Comments'
+import UserProfile from './UserProfile'
+import CreateUser from './CreateUser'
+import EventDetails from './EventDetails'
+
 
 
 export class App extends React.Component {
@@ -21,13 +24,13 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <a href='/events/comments'>comments</a>
-        {/* <Navbar /> */}
+        <Navbar/>
         <Switch>
-          <Route path='/' exact component= {Home} />
-          <Route path='/events/:id'  exact component= {EventDetails} />
-          <Route path='/eventsPage' exact component= {Events} />
-          <Route path='/events/comments' exact component= {Comments} />
+          <Route exact path='/events' component= {Events} />
+          <Route exact path='/' component= {Home} />
+          <Route exact path='/events/:id' component={EventDetails} />
+          <Route exact path='/users/active' component={UserProfile} />
+          <Route exact path='/users/new' component= {CreateUser} />
         </Switch>
       </Router>
       </>
