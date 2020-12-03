@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { fetchEvents } from '../actions/events'
+import { fetchUsers } from '../actions/users'
+import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
 import CreateUser from './CreateUser'
+import { EventDetails } from './EventDetails'
 
 
 export class App extends React.Component {
   componentDidMount () {
-    
+    this.props.dispatch(fetchEvents())
+    this.props.dispatch(fetchUsers())
   }
 
   render () {
@@ -20,6 +24,7 @@ export class App extends React.Component {
         <Switch>
           <Route path='/' exact component= {Home} />
           <Route path='/users/new' component= {CreateUser} />
+          <Route path='/events/:id' exact component= {EventDetails} />
         </Switch>
       </Router>
       </>
