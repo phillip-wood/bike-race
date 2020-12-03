@@ -1,3 +1,5 @@
+import { ACTIVE_USER_CHANGED } from "../actions/users"
+
 const initialState = {
   id: 1,
   username: 'bonecrusher',
@@ -9,6 +11,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+
+    case ACTIVE_USER_CHANGED:
+      return action.user
+      
     default:
       return state
   }
