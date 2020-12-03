@@ -7,6 +7,7 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Navbar from './Navbar'
 import { EventDetails } from './EventDetails'
+import Events from './Events'
 
 
 export class App extends React.Component {
@@ -23,6 +24,7 @@ export class App extends React.Component {
         <Switch>
           <Route path='/' exact component= {Home} />
           <Route path='/events/:id' exact component= {EventDetails} />
+          <Route path='/eventsPage' exact component= {Events} />
         </Switch>
       </Router>
       </>
