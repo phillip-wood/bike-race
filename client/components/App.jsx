@@ -8,6 +8,7 @@ import Home from './Home'
 import Navbar from './Navbar'
 import { EventDetails } from './EventDetails'
 import Events from './Events'
+import { Comments } from './Comments'
 
 
 export class App extends React.Component {
@@ -20,11 +21,13 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar />
+        <a href='/events/comments'>comments</a>
+        {/* <Navbar /> */}
         <Switch>
           <Route path='/' exact component= {Home} />
-          <Route path='/events/:id' exact component= {EventDetails} />
+          <Route path='/events/:id'  exact component= {EventDetails} />
           <Route path='/eventsPage' exact component= {Events} />
+          <Route path='/events/comments' exact component= {Comments} />
         </Switch>
       </Router>
       </>
