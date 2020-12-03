@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-
 class PastEvents extends React.Component {
 
   render() {
@@ -10,16 +9,16 @@ class PastEvents extends React.Component {
       <h1>Past Events</h1>
          <ul>
         {this.props.events.map( event => { 
-           //declears new date varible for current time/date
-           let d = new Date()
-           // converts it into epoch time
-           let currentTime = d.getTime()
-           
-           // converts epoch race time to date/time
-           let raceFullDate = new Date(event.startTime)
-           let raceTime = raceFullDate.toLocaleTimeString()
-           let raceDate = raceFullDate.toLocaleDateString()
-           
+            //declears new date varible for current time/date
+            let d = new Date()
+            // converts it into epoch time
+            let currentTime = d.getTime()
+            
+            // converts epoch race time to date/time string then slice out what we need to display
+            let raceFullDate = String(new Date(event.startTime * 1000))
+            let raceDate = raceFullDate.slice(0,15)
+            let raceTime = raceFullDate.slice(17,21)
+
            if(currentTime < event.startTime){
             return (
                 <li key={event.id} 
