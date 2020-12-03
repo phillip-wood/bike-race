@@ -24,22 +24,22 @@
 id\
 username\
 email\
-profile picture\
-number events attended\
+imgURL\
+eventsAttended\
 bike_type\ dropdown list
 bike image? null initially\
 
 
 #### event
 id\
-event_name\
+eventName\
 description\
-start_point [lat, long]\
-end_point null\
-start date/time(epoch)\
-max group size\
+startPoint [lat, long]\
+endPoint null\
+startTime(epoch)\
+maxGroupSize\
 distance\
-user_id\
+creator_id\
 
 
 #### users_events
