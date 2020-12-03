@@ -2,6 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../actions/events'
 import { fetchUsers } from '../actions/users'
+import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+
+import Home from './Home'
+import Navbar from './Navbar'
+
 
 export class App extends React.Component {
   componentDidMount () {
@@ -11,9 +16,14 @@ export class App extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Bike race</h1>
-      </div>
+      <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component= {Home} />
+        </Switch>
+      </Router>
+      </>
     )
   }
 }

@@ -8,6 +8,9 @@ const userRoutes = require('./routes/users')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
+server.use('*',(req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 server.use('/api/events', eventRoutes)
 server.use('/api/users', userRoutes)
