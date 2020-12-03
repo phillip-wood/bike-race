@@ -26,7 +26,7 @@ export class App extends React.Component {
       <Router>
         <Navbar/>
           <Route exact path='/' component= {Home} />
-          {this.props.users.id &&  
+          {this.props.users.length &&  
           <Switch>
             <Route exact path='/events' component= {Events} />
             <Route exact path='/events/:id' component={EventDetails} />
