@@ -16,6 +16,9 @@ function getUsers (db = connection) {
   return db('users').select()
 }
 
+function addUser (user, db = connection) {
+  return db('users').insert(user)
+}
 
 
 module.exports = {
@@ -23,4 +26,5 @@ module.exports = {
   getComments,
   getAttendees,
   getUsers,
+  addUser,
 }
