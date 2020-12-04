@@ -13,3 +13,10 @@ export const addUserAPI = (user) => {
     .then(res => res.body)
 }
 
+export const editUserAPI = (id, user) => {
+  return request
+    .patch('/api/users/' + id)
+    .send(user)
+    .then(res => res.body)
+}
+
