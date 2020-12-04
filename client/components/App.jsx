@@ -11,6 +11,7 @@ import Comments from './Comments'
 import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
+import EditUser from './EditProfileForm'
 import UserById from './UserById'
 
 
