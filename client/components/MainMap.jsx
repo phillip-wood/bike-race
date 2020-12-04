@@ -6,17 +6,17 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFja2VuYWRhbSIsImEiOiJja2k3MHE1aDEwcmF2MnJvb
 class MainMap extends React.Component {
     state = {
       initial: {
-        lng: 174.7571,
-        lat: -41.2873,
+        lng: 174.7741,
+        lat: -41.3670,
         zoom: 10
       },
       start: [
-        174.7571,
-        -41.2873
+        174.7741,
+        -41.2970
       ],
       finish: [
-        174.8571,
-        -41.3873
+        174.7741,
+        -41.2970
       ]
     }
 
