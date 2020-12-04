@@ -45,4 +45,18 @@ router.post('/addcomment', (req, res) => {
     })
 })
 
+
+//add user to current race
+router.post ('/addtoevent', (req,res) =>{
+  console.log(req.body)
+    return db.addUserToEvent(req.body)
+    .then(()=> {
+      res.json({})
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
+})
+
 module.exports = router

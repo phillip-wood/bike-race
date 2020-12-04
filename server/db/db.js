@@ -24,6 +24,14 @@ function addComment (comment, db = connection) {
   return db('comments').insert(comment)
 }
 
+
+function addUserToEvent(activeUser, db = connection){
+  return db('users_events').insert(activeUser, {
+    user_id:activeUser.user_id,
+    event_id: activeUser.event_id
+  })
+}
+
 module.exports = {
   getEvents,
   getComments,
@@ -31,4 +39,5 @@ module.exports = {
   getUsers,
   addUser,
   addComment,
+  addUserToEvent
 }
