@@ -6,21 +6,23 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFja2VuYWRhbSIsImEiOiJja2k3MHE1aDEwcmF2MnJvb
 class SingleEventMap extends React.Component {
     state = {
       initial: {
-        lng: 174.7571,
-        lat: -41.2873,
-        zoom: 10
+        lng:  this.props.start[1],
+        lat: this.props.start[0],
+        zoom: 12
       },
       start: [
-        174.78044,
-        -41.3022
+        this.props.start[1],
+        this.props.start[0]
       ],
       finish: [
-        174.7969,
-        -41.3156
+        this.props.end[1],
+        this.props.end[0]
       ]
     }
-
+    
     componentDidMount () {
+      console.log(console.log(this.state.start))
+  
       const map = new mapboxgl.Map({
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -49,7 +51,8 @@ class SingleEventMap extends React.Component {
           }
           if (map.getSource('route')) {
             map.getSource('route').setData(geojson)
-          } else {
+          }
+           else {
             map.addLayer({
               id: 'route',
               type: 'line',
@@ -93,18 +96,19 @@ class SingleEventMap extends React.Component {
       getRoute(this.state.start, this.state.finish)
       getRoute(this.state.start, this.state.finish)
 
+
       const finishMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: '#ff3300'
       })
-        .setLngLat([174.78044, -41.3022])
+        .setLngLat([this.props.end[1], this.props.end[0]])
         .addTo(map)
 
       const startMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: '#00ff00'
       })
-        .setLngLat([174.7969, -41.3156])
+        .setLngLat([this.props.start[1], this.props.start[0]])
         .addTo(map)
 
       startMarker.on('dragend', () => { onDragEnd(startMarker, 'start') })
@@ -113,9 +117,13 @@ class SingleEventMap extends React.Component {
 
     render () {
       return (
+        <>
+        {this.state.start.length &&
         <div className='mapFrame'>
-          <div ref={(el) => { this.mapContainer = el }} className="mapContainer" />
+          <div ref={(el) => { this.mapContainer = el }} className="singleMapContainer" />
         </div>
+        }
+        </>
       )
     }
 }
