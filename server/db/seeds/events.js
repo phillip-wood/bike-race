@@ -24,6 +24,16 @@ exports.seed = function(knex) {
           distance: '2', 
           creator_id: 2  
         },
+        {
+          eventName: 'more peddling', 
+          description: 'lets go to the pubb', 
+          startPoint: '[-41.2970, 174.7739]', 
+          endPoint: '[-41.2938, 174.7840]',  
+          startTime: '1600020000', 
+          maxGroupSize: 5, 
+          distance: '2', 
+          creator_id: 2  
+        },
       ])
     })
 }
