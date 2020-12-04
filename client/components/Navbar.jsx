@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 // import { Button } from './Button';
 
-function Navbar() {
+function Navbar(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true)
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -42,18 +42,22 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
+              {props.activeUser && 
               <Link to='/createEvent' className='nav-links' onClick={closeMobileMenu}>
                 Create Event
               </Link>
+              }
             </li>
             <li className='nav-item'>
+            {props.activeUser && 
               <Link to='/eventsPage' className='nav-links' onClick={closeMobileMenu}>
                 Events Page
               </Link>
+            }
             </li>
             <li className='nav-item'>
               <Link to='/users/active' className='nav-links' onClick={closeMobileMenu}>
-                Profile
+                {props.activeUser && props.activeUser.username}
               </Link>
             </li>
           </ul>
@@ -63,4 +67,11 @@ function Navbar() {
     </>
   );
 }
-export default Navbar
+
+function ms2p(globalState){
+  return {
+    activeUser: globalState.activeUser
+  }
+}
+
+export default connect(ms2p)(Navbar)

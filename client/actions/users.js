@@ -4,6 +4,7 @@ export const SET_USERS = 'SET_USERS'
 export const USER_ADDED = 'USER_ADDED'
 export const ACTIVE_USER_CHANGED = 'ACTIVE_USER_CHANGED'
 export const USER_UPDATED = 'USER_UPDATED'
+export const ACTIVE_USER_UPDATED = 'ACTIVE_USER_UPDATED'
 
 export const fetchUsers = () => {
   return dispatch => {
