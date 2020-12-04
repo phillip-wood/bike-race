@@ -7,6 +7,7 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Navbar from './Navbar'
 import Events from './Events'
+import Comments from './Comments'
 import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
@@ -24,7 +25,8 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <a href="/events/:id/comments">my page</a>
           <Route exact path='/' component= {Home} />
           {this.props.users.length &&  
           <Switch>
@@ -33,6 +35,7 @@ export class App extends React.Component {
             <Route exact path='/users/active' component={UserProfile} />
             <Route exact path='/users/new' component= {CreateUser} />
             <Route exact path='/users/:id' component= {UserById}/>
+            <Route exact path='/events/:id/comments' component= {Comments}/>
           </Switch>
           }
       </Router>

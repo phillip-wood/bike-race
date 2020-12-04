@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
 
-
+//get all events (on page load)
 router.get('/', (req, res) => {
   let events
   return db.getEvents()
@@ -26,6 +26,19 @@ router.get('/', (req, res) => {
       return events
     })
     .then(() => res.json(events))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
+})
+
+
+//add new comment to event
+router.post('/addcomment', (req, res) => {
+  return db.addComment(req.body)
+    .then(ids => {
+      res.json(ids[0])
+    })
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Somthing went wrong' })
