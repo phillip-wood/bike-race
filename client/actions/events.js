@@ -1,7 +1,9 @@
-import { addCommentAPI, fetchEventsAPI } from "../apis/events"
+import { addCommentAPI, fetchEventsAPI, addUserToEventAPI, removeUserFromEventAPI } from "../apis/events"
 
 export const SET_EVENTS = 'SET_EVENTS'
 export const COMMENT_ADDED = 'COMMENT_ADDED'
+export const USER_ADDED_TO_EVENT = 'USER_ADDED_TO_EVENT'
+export const USER_REMOVE_FROM_EVENT = 'USER_REMOVE_FROM_EVENT'
 
 export const fetchEvents = () => {
   return dispatch => {
@@ -35,3 +37,39 @@ export const addNewComment = (newComment, id) => {
     id
   }
 }
+export const addUserToEvent = (activeUser) => {
+  console.log(activeUser)
+  return {
+    type: USER_ADDED_TO_EVENT,
+    attendees: activeUser
+   
+  }
+}
+
+export const removeUserFromEvent = (activeUser) => {
+  console.log(activeUser)
+  return {
+    type:USER_REMOVE_FROM_EVENT,
+    attendees: activeUser
+   
+  }
+}
+
+export const postUserToEvent = (activeUser) => {
+  return dispatch => {
+    addUserToEventAPI(activeUser)
+      .then(() => {
+        dispatch(addUserToEvent(activeUser))
+      })
+  }
+}
+export const delUserFromEvent =(activeUser)=>{
+  return dispatch => {
+    removeUserFromEventAPI(activeUser)
+      .then(() => {
+        dispatch(removeUserFromEvent(activeUser))
+      })
+  }
+
+}
+
