@@ -25,7 +25,7 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        {/* <Navbar /> */}
+        <Navbar />
           <Route exact path='/' component= {Home} />
           {this.props.users.length &&  
           <Switch>

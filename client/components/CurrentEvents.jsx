@@ -7,9 +7,9 @@ class CurrentEvents extends React.Component {
   render() {
     return (
       <>
-      <h1>Upcoming Events</h1>
-         <ul>
-        {this.props.events.map( event => { 
+      <h1 className='curretnEventsHeader'>Upcoming Events</h1>
+         <ul className='event--li'>
+          {this.props.events.map( event => { 
             //declears new date varible for current time/date
            let d = new Date()
            // converts it into epoch time
