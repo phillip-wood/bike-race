@@ -28,3 +28,11 @@ export const addUserToEventAPI = activeUser =>{
     .send(activeUser)
     .then(res => {res.body})
 }
+
+export const removeUserFromEventAPI = activeUser =>{
+  return request
+    .del('/api/events/removefromevent')
+    .send(activeUser)
+    .then(res => {res.body})
+}
+

@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import SingleEventMap from './SingleEventMap'
-import {postUserToEvent} from '../actions/events'
+import {postUserToEvent, delUserFromEvent} from '../actions/events'
 
 class EventDetails extends React.Component{
   render(){
 
+    let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
     const addUserToEvent= ()=>{
       const addEvent={
           user_id: this.props.activeUser.id,
@@ -14,12 +15,32 @@ class EventDetails extends React.Component{
       }
         this.props.dispatch(postUserToEvent(addEvent))
     }
+    const removeUserFromEvent= ()=>{
+      const addEvent={
+          user_id: this.props.activeUser.id,
+          event_id: parseInt(this.props.match.params.id)
+      }
+        this.props.dispatch(delUserFromEvent(addEvent))
+    }
 
-
-
-    const eventDeatils = this.props.events.find(event =>{
-      return event.id == this.props.match.params.id
-    })
+    const joinOrLeaveEvent = (user, atten) =>{
+      let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
+      if(atendents.length == 0){
+        return(
+          <>
+           <button onClick={()=> addUserToEvent()}>Join Event</button>
+          </>
+          )
+      }else{
+        return(
+          <>
+          <button onClick={()=> removeUserFromEvent()}>Leave Event</button>
+          </>
+          )
+        
+      }
+     
+  }
     return (
       <>
       { eventDeatils && (<div>
@@ -36,13 +57,13 @@ class EventDetails extends React.Component{
         {eventDeatils.attendees.map(attendent => {
             return(
              this.props.users.map(att =>{
-              if(att.id == attendent){
+               if(att.id == attendent){
                 return(
                   <>
                   <li key={att.id}>
                     <Link to={`/users/${att.id}`}>
-                    {att.username} <br/>
-                    {att.bikeType}
+                      {att.username} <br/>
+                      {att.bikeType}
                     </Link>
                   </li>
                 </>
@@ -54,7 +75,9 @@ class EventDetails extends React.Component{
             <Link to={`/events/${eventDeatils.id}/comments`} >
             Comments: {eventDeatils.comments.length}
             </Link>
-            <button onClick={()=> addUserToEvent()}>Join Event</button>
+            {joinOrLeaveEvent()}
+           
+            
       </div>
       </div>
       )}

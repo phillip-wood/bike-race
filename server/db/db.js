@@ -39,6 +39,10 @@ function addUserToEvent(activeUser, db = connection){
     event_id: activeUser.event_id
   })
 }
+function removeUserFromEvent(activeUser, db = connection){
+  return db('users_events').where('event_id',activeUser.event_id).delete(activeUser)
+}
+
 
 module.exports = {
   getEvents,
@@ -50,4 +54,5 @@ module.exports = {
   addComment,
   addUserToEvent,
   editUser,
+  removeUserFromEvent
 }

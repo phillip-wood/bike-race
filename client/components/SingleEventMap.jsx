@@ -20,9 +20,7 @@ class SingleEventMap extends React.Component {
       ]
     }
     
-    componentDidMount () {
-      console.log(console.log(this.state.start))
-  
+    componentDidMount () {  
       const map = new mapboxgl.Map({
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -31,8 +29,6 @@ class SingleEventMap extends React.Component {
       })
 
       const getRoute = (start,end) => {
-        // const start = start
-        console.log(start,end)
         const url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken
 
         const req = new XMLHttpRequest()
