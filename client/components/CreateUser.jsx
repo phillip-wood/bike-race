@@ -35,9 +35,9 @@ export class CreateUser extends React.Component {
   }
 
   render() {
-    const { redirect } = this.state;
+    const { redirect } = this.state
     if (redirect) {
-      return <Redirect to='/' />;
+      return <Redirect to='/' />
     }
     
     return (

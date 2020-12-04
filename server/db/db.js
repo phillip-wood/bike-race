@@ -16,8 +16,16 @@ function getUsers (db = connection) {
   return db('users').select()
 }
 
+function addEvent (newEvent, db = connection) {
+  return db('events').insert(newEvent)
+}
+
 function addUser (user, db = connection) {
   return db('users').insert(user)
+}
+
+function editUser (id, user, db = connection) {
+  return db('users').update(user).where('id', id)
 }
 
 function addComment (comment, db = connection) {
@@ -37,7 +45,9 @@ module.exports = {
   getComments,
   getAttendees,
   getUsers,
+  addEvent,
   addUser,
   addComment,
-  addUserToEvent
+  addUserToEvent,
+  editUser,
 }

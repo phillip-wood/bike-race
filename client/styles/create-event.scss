@@ -1,0 +1,20 @@
+.event-form {
+  background-color: rgba(28, 27, 27, 0.5);
+  bottom: 0vh;
+  height: auto;
+  padding-top: 8px;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+  z-index: 999;
+}
+
+.event-form input {
+  margin-bottom: 8px;
+  width: 90%;
+}
+
+.event-form textarea {
+  margin-bottom: 8px;
+  width: 90%;
+}
