@@ -34,35 +34,36 @@ export class EditUser extends React.Component {
 
     return (
       <div>
-        <h1>Edit your profile, {this.props.activeUser.username}</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className='editUserHeader'>Edit your profile, {this.props.activeUser.username}</h1>
+        <div className='editUserBox'>
+        <form onSubmit={this.handleSubmit} className='editUserContainer'>
 
-          <label htmlFor="username">Username:</label>
-          <input
+          <label htmlFor="username" className='editUserLabel'>Username:</label>
+          <input  className='editUserInput'
             type="text"
             name="username"
             onChange={this.handleChange}
             value={this.state.username}
           />
-
-          <label htmlFor="email">Email</label>
-          <input
+          <br/>
+          <label htmlFor="email" className='editUserLabel'>Email</label>
+          <input  className='editUserInput'
             type="text"
             name="email"
             onChange={this.handleChange}
             value={this.state.email}
           />
-
-          <label htmlFor="imgURL">imgURL</label>
-          <input
+          <br/>
+          <label htmlFor="imgURL" className='editUserLabel'>imgURL</label>
+          <input  className='editUserInput'
             type="text"
             name="imgURL"
             onChange={this.handleChange}
             value={this.state.imgURL}
           />
-
-          <label htmlFor="bikeType">Bike type:</label>
-          <select
+          <br/>
+          <label htmlFor="bikeType" className='editUserLabel'>Bike type:</label>
+          <select  className='editUserInput'
             name="bikeType"
             onChange={this.handleChange}
             value={this.state.bikeType}>
@@ -71,9 +72,13 @@ export class EditUser extends React.Component {
             <option value="Road">Road</option>
             <option value="Unicycle">Unicycle</option>
           </select>
-
-          <button type="submit">Confirm</button>
+          <br/>
         </form>
+        <div class="button" id="button-5">
+          <div id="translate"></div>
+            <button type="submit">Confirm</button>
+          </div>
+        </div>
       </div>
     )
   }
