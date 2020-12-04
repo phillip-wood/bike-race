@@ -1,4 +1,120 @@
-.profilePicture {
-  width: 30%;
-  height: 30%;
+.profilePageHeader{
+  text-align: center;
+  color: #BFC0C0;
 }
+
+.profilePicture {
+  display: block;
+  width: 15%;
+  height: auto;
+  border: 5px solid snow;
+  border-radius: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 600px) {
+  .profilePicture {
+    width: 32%; 
+  }
+}
+
+.infoBorder{
+  border: 3px solid snow;
+  border-radius: 5%;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.userInfoPP{
+  display: block;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1%;
+  color: #BFC0C0;
+  padding: 3px;
+}
+
+.upcomingEventsContainer{
+  display: block;
+  margin-left: 5%;
+  color: #BFC0C0;
+}
+
+.upcomingEventsList{
+list-style-type: none;
+
+}
+
+.upcomingEventsLink{
+  text-decoration: none;
+  color:#BFC0C0;
+}
+
+.editButton{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  // width: 50%;
+}
+
+
+/* Fifth Button */
+
+.button{
+  display: flex;
+  height: 40px;
+  width: 150px;
+  border: 2px solid snow;
+  margin: 40px auto 20px auto;
+  color: #BFC0C0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+a {
+  color: #BFC0C0;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* Fifth Button */
+
+#button-5 {
+  position: relative;
+  overflow: hidden;
+  cursor: auto;
+}
+
+#button-5 a {
+  position: relative;
+  transition: all .25s ease-Out;
+}
+
+#translate {
+  transform: rotate(50deg);
+  width: 100%;
+  height: 250%;
+  left: -200px;
+  top: -30px;
+  background: #BFC0C0;
+  position: absolute;
+  transition: all .3s ease-Out;
+}
+
+#button-5:hover #translate {
+  left: 0;
+}
+
+#button-5:hover a {
+  color: #2D3142;
+}
+
+
