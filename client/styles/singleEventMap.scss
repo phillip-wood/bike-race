@@ -1,9 +1,26 @@
 .singleMapContainer{
   overflow:visible;
-  position: fixed;
-  width:40vw;
 }
 .content_container{
-  text-align: right;
-  align-content: right;
+  padding-top: 320px;
+  text-align: center;
 }
+#fit {
+  display: block;
+  position: relative;
+  margin: 0px auto;
+  width: 50%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  background: #ee8a65;
+  }
+  .mapFrame{
+    overflow:visible;
+    position: relative;
+    width:100%;
+  }

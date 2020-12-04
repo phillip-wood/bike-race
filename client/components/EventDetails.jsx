@@ -40,7 +40,7 @@ class EventDetails extends React.Component{
 
     const joinOrLeaveEvent = (user, atten) =>{
       let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
-      if(currentTime > raceFullDate == false){
+      if(currentTime < raceFullDate == false){
         if(atendents.length == 0){
           return(
             <>
@@ -61,12 +61,11 @@ class EventDetails extends React.Component{
     return (
       <>
       { eventDeatils && (<div>
-      <h1>event details</h1>
+      <h1>{eventDeatils.eventName}<br/></h1>
       <div>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
       </div>
       <div className='content_container'>
-        Event Name: {eventDeatils.eventName}<br/>
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
