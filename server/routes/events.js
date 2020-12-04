@@ -32,4 +32,14 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/new', (req, res) => {
+  const newEvent = req.body
+  return db.addEvent(newEvent)
+    .then(id => res.json({ id }))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
 module.exports = router

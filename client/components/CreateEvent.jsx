@@ -4,8 +4,10 @@ import MainMap from './MainMap'
 
 class CreateEvent extends React.Component {
   state = {
-    input: {
-      name: null,
+    newEvent: {
+      eventName: null,
+      startPoint: null,
+      endPoint: null,
       description: null,
       time: null,
       date: null
@@ -14,7 +16,7 @@ class CreateEvent extends React.Component {
 
   handleChange = (event) => {
     this.setState({
-      input: {
+      newEvent: {
         ...this.state.input,
         [event.target.name]: event.target.value
       }
@@ -22,7 +24,7 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit = (event) => {
-
+    console.log(this.state)
   }
 
   render () {
