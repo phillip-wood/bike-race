@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+
+
 export class Home extends React.Component {
 
 
@@ -25,7 +27,6 @@ export class Home extends React.Component {
             <button type="submit" name="view_event">View Race</button>
           </Link>
         </div>
-
       </div>
     )
   }
