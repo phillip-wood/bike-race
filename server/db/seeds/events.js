@@ -35,6 +35,6 @@ exports.seed = function (knex) {
           distance: "2",
           creator_id: 2,
         },
-      ]);
-    });
-};
+      ])
+    })
+}

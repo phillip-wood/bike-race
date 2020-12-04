@@ -24,6 +24,10 @@ function addUser (user, db = connection) {
   return db('users').insert(user)
 }
 
+function editUser (id, user, db = connection) {
+  return db('users').update(user).where('id', id)
+}
+
 function addComment (comment, db = connection) {
   return db('comments').insert(comment)
 }
@@ -36,4 +40,5 @@ module.exports = {
   addEvent,
   addUser,
   addComment,
+  editUser,
 }

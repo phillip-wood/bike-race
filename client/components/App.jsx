@@ -13,6 +13,7 @@ import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
 import UserById from './UserById'
+import EditUser from './EditUser'
 
 export class App extends React.Component {
   componentDidMount () {
@@ -31,10 +32,11 @@ export class App extends React.Component {
             <Route path='/createEvent' exact component={CreateEvent} />
             <Route exact path='/events' component= {Events} />
             <Route exact path='/events/:id' component={EventDetails} />
-            <Route exact path='/users/active' component={UserProfile} />
-            <Route exact path='/users/new' component= {CreateUser} />
-            <Route exact path='/users/:id' component= {UserById}/>
             <Route exact path='/events/:id/comments' component= {Comments}/>
+            <Route exact path='/users/new' component= {CreateUser} />
+            <Route exact path='/users/active' component={UserProfile} />
+            <Route exact path='/users/active/edit' component= {EditUser}/>
+            <Route exact path='/users/:id' component= {UserById}/>
           </Switch>
           }
       </Router>

@@ -7,10 +7,8 @@ export class UserProfile extends React.Component {
   
   render() {
     const currentTime = Date.now()/1000 
-    console.log(currentTime)
     return (
       this.props.activeUser ? <div>
-         <h1>Profile</h1>
           <div>
             <div>
             <img src={this.props.activeUser.imgURL}  className='profilePicture' />
@@ -29,8 +27,7 @@ export class UserProfile extends React.Component {
                     <li>{event.eventName}</li>
                     </Link>
                   </ul>
-                )
-                }
+                )}
               })}
               </div>
           <div>
@@ -47,7 +44,7 @@ export class UserProfile extends React.Component {
               }
               })}
           </div>
-          <Link to='/editProfile'>
+          <Link to='/users/active/edit'>
           <button>Edit profile</button>
           </Link>
      </div> :null

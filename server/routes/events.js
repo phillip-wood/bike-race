@@ -32,7 +32,6 @@ router.get('/', (req, res) => {
     })
 })
 
-<<<<<<< HEAD
 router.post('/new', (req, res) => {
   const newEvent = req.body
   return db.addEvent(newEvent)
@@ -43,8 +42,6 @@ router.post('/new', (req, res) => {
     })
 })
 
-||||||| 8a55fa0
-=======
 
 //add new comment to event
 router.post('/addcomment', (req, res) => {
@@ -58,5 +55,4 @@ router.post('/addcomment', (req, res) => {
     })
 })
 
->>>>>>> 0a4c7ca62bea6d6f61dc2afe394a5ea58ada5ad6
 module.exports = router
