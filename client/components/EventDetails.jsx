@@ -8,12 +8,25 @@ class EventDetails extends React.Component{
   render(){
 
     let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
+    
+    const currentTime = String(new Date(Date.now()/1000 ))
+    let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
+    let raceDate = raceFullDate.slice(0,15)
+    let raceTime = raceFullDate.slice(17,21)
+    console.log(currentTime )
+
+    console.log(currentTime > raceFullDate)
+  
     const addUserToEvent= ()=>{
-      const addEvent={
-          user_id: this.props.activeUser.id,
-          event_id: parseInt(this.props.match.params.id)
+      if(eventDeatils.attendees.length == eventDeatils.maxGroupSize){
+        alert('This reace is full soz')
+      }else{
+        const addEvent={
+            user_id: this.props.activeUser.id,
+            event_id: parseInt(this.props.match.params.id)
+        }
+          this.props.dispatch(postUserToEvent(addEvent))
       }
-        this.props.dispatch(postUserToEvent(addEvent))
     }
     const removeUserFromEvent= ()=>{
       const addEvent={
@@ -23,23 +36,27 @@ class EventDetails extends React.Component{
         this.props.dispatch(delUserFromEvent(addEvent))
     }
 
+
+
     const joinOrLeaveEvent = (user, atten) =>{
       let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
-      if(atendents.length == 0){
-        return(
-          <>
-           <button onClick={()=> addUserToEvent()}>Join Event</button>
-          </>
-          )
-      }else{
-        return(
-          <>
-          <button onClick={()=> removeUserFromEvent()}>Leave Event</button>
-          </>
-          )
-        
+      if(currentTime > raceFullDate == false){
+        if(atendents.length == 0){
+          return(
+            <>
+             <button onClick={()=> addUserToEvent()}>Join Event</button>
+            </>
+            )
+        }else{
+          return(
+            <>
+            <button onClick={()=> removeUserFromEvent()}>Leave Event</button>
+            </>
+            )
+        }
       }
-     
+      
+    
   }
     return (
       <>
@@ -50,7 +67,8 @@ class EventDetails extends React.Component{
       </div>
       <div className='content_container'>
         Event Name: {eventDeatils.eventName}<br/>
-        Start Time: {eventDeatils.startTime}<br/>
+        Start Date: {raceDate}<br/>
+        Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
         List of PEEPS:
         <ul>
@@ -77,7 +95,6 @@ class EventDetails extends React.Component{
             </Link>
             {joinOrLeaveEvent()}
            
-            
       </div>
       </div>
       )}
