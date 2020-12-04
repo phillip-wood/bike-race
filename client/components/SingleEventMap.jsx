@@ -3,24 +3,26 @@ import mapboxgl from 'mapbox-gl'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFja2VuYWRhbSIsImEiOiJja2k3MHE1aDEwcmF2MnJvbGd2NWE5aW9mIn0.fFQVww5WDzwFB5zgovZ6NQ'
 
-class MainMap extends React.Component {
+class SingleEventMap extends React.Component {
     state = {
       initial: {
-        lng: 174.7741,
-        lat: -41.3670,
-        zoom: 10
+        lng:  this.props.start[1],
+        lat: this.props.start[0],
+        zoom: 12
       },
       start: [
-        174.7741,
-        -41.2970
+        this.props.start[1],
+        this.props.start[0]
       ],
       finish: [
-        174.7741,
-        -41.2970
+        this.props.end[1],
+        this.props.end[0]
       ]
     }
-
+    
     componentDidMount () {
+      console.log(console.log(this.state.start))
+  
       const map = new mapboxgl.Map({
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -28,8 +30,9 @@ class MainMap extends React.Component {
         zoom: this.state.initial.zoom
       })
 
-      const getRoute = (startPoint, end) => {
-        const start = startPoint
+      const getRoute = (start,end) => {
+        // const start = start
+        console.log(start,end)
         const url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken
 
         const req = new XMLHttpRequest()
@@ -48,7 +51,8 @@ class MainMap extends React.Component {
           }
           if (map.getSource('route')) {
             map.getSource('route').setData(geojson)
-          } else {
+          }
+           else {
             map.addLayer({
               id: 'route',
               type: 'line',
@@ -62,10 +66,10 @@ class MainMap extends React.Component {
                     coordinates: geojson
                   }
                 }
-              },
+              }, 
               layout: {
                 'line-join': 'round',
-                'line-cap': 'round'
+                'line-cap' : 'round'
               },
               paint: {
                 'line-color': '#3887be',
@@ -87,21 +91,24 @@ class MainMap extends React.Component {
             lngLat.lat
           ]
         })
-        getRoute(this.state.start, this.state.finish)
+        console.log(lngLat)
       }
+      getRoute(this.state.start, this.state.finish)
+      getRoute(this.state.start, this.state.finish)
+
 
       const finishMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: '#ff3300'
       })
-        .setLngLat([174.7741, -41.2970])
+        .setLngLat([this.props.end[1], this.props.end[0]])
         .addTo(map)
 
       const startMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: '#00ff00'
       })
-        .setLngLat([174.7741, -41.2970])
+        .setLngLat([this.props.start[1], this.props.start[0]])
         .addTo(map)
 
       startMarker.on('dragend', () => { onDragEnd(startMarker, 'start') })
@@ -110,11 +117,15 @@ class MainMap extends React.Component {
 
     render () {
       return (
+        <>
+        {this.state.start.length &&
         <div className='mapFrame'>
-          <div ref={(el) => { this.mapContainer = el }} className="mapContainer" />
+          <div ref={(el) => { this.mapContainer = el }} className="singleMapContainer" />
         </div>
+        }
+        </>
       )
     }
 }
 
-export default MainMap
+export default SingleEventMap
