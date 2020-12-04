@@ -25,15 +25,17 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <a href="/events/:id/comments">my page</a>
           <Route exact path='/' component= {Home} />
-          {this.props.users.id &&  
+          {this.props.users.length &&  
           <Switch>
             <Route exact path='/events' component= {Events} />
             <Route exact path='/events/:id' component={EventDetails} />
             <Route exact path='/users/active' component={UserProfile} />
             <Route exact path='/users/new' component= {CreateUser} />
             <Route exact path='/users/:id' component= {UserById}/>
+            <Route exact path='/events/:id/comments' component= {Comments}/>
           </Switch>
           }
       </Router>
