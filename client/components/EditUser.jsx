@@ -79,11 +79,6 @@ export class EditUser extends React.Component {
   }
 }
 
-// username(pin):"bonecrusher"
-// email(pin):"blackie@gmail.com"
-// imgURL(pin):"http://t1.gstatic.com/images?q=tbn:ANd9GcQYxMf1KNukK03qsdLZgFfMqKGES6jbrgACOFpKJ45Nyr-UQMt5LL8EqCD6g95VXEaE7ZZmaNuzfy93jb8Iqho"
-// bikeType(pin):"BMX"
-
 function mapStateToProps(globalState) {
   return {
     activeUser: globalState.activeUser
