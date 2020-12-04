@@ -2,21 +2,51 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import SingleEventMap from './SingleEventMap'
+import {postUserToEvent, delUserFromEvent} from '../actions/events'
 
 class EventDetails extends React.Component{
   render(){
-    const eventDeatils = this.props.events.find(event =>{
-      // console.log(event)
-      return event.id == this.props.match.params.id
-    })
-    
-    console.log()
+
+    let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
+    const addUserToEvent= ()=>{
+      const addEvent={
+          user_id: this.props.activeUser.id,
+          event_id: parseInt(this.props.match.params.id)
+      }
+        this.props.dispatch(postUserToEvent(addEvent))
+    }
+    const removeUserFromEvent= ()=>{
+      const addEvent={
+          user_id: this.props.activeUser.id,
+          event_id: parseInt(this.props.match.params.id)
+      }
+        this.props.dispatch(delUserFromEvent(addEvent))
+    }
+
+    const joinOrLeaveEvent = (user, atten) =>{
+      let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
+      if(atendents.length == 0){
+        return(
+          <>
+           <button onClick={()=> addUserToEvent()}>Join Event</button>
+          </>
+          )
+      }else{
+        return(
+          <>
+          <button onClick={()=> removeUserFromEvent()}>Leave Event</button>
+          </>
+          )
+        
+      }
+     
+  }
     return (
       <>
-      <div>
+      { eventDeatils && (<div>
       <h1>event details</h1>
       <div>
-      <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
+       <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
       </div>
       <div className='content_container'>
         Event Name: {eventDeatils.eventName}<br/>
@@ -25,23 +55,32 @@ class EventDetails extends React.Component{
         List of PEEPS:
         <ul>
         {eventDeatils.attendees.map(attendent => {
-          console.log(attendent, 'attendent')
             return(
              this.props.users.map(att =>{
-              if(att.id == attendent){
-                console.log(att)
+               if(att.id == attendent){
                 return(
+                  <>
                   <li key={att.id}>
-                    {att.username} <br/>
-                    {att.bikeType}
+                    <Link to={`/users/${att.id}`}>
+                      {att.username} <br/>
+                      {att.bikeType}
+                    </Link>
                   </li>
+                </>
                 )}
-            }))
-          })}
+              }))
+            })}
         </ul>
-        Player Limit:
+            Player Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
+            <Link to={`/events/${eventDeatils.id}/comments`} >
+            Comments: {eventDeatils.comments.length}
+            </Link>
+            {joinOrLeaveEvent()}
+           
+            
       </div>
       </div>
+      )}
       </>
     )
   }
@@ -49,7 +88,8 @@ class EventDetails extends React.Component{
 function mapStateToProps(globalState){
   return{
     events: globalState.events,
-    users: globalState.users
+    users: globalState.users,
+    activeUser: globalState.activeUser
   }
 }
 export default connect(mapStateToProps)(EventDetails)
