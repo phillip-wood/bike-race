@@ -1,9 +1,17 @@
-import { CREATE_EVENT } from '../actions/createEvent'
+import { UPDATE_POSITION } from '../actions/createEvent'
 
-const reducer = (state = {}, action) => {
+const initialState = {
+  start: [],
+  finish: []
+}
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_EVENT:
-      return action.event
+    case UPDATE_POSITION:
+      return {
+        ...state,
+        [action.marker]: action.newPosition
+      }
 
     default:
       return state

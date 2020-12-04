@@ -1,5 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import mapboxgl from 'mapbox-gl'
+import { updatePosition } from '../actions/createEvent'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFja2VuYWRhbSIsImEiOiJja2k3MHE1aDEwcmF2MnJvbGd2NWE5aW9mIn0.fFQVww5WDzwFB5zgovZ6NQ'
 
@@ -80,6 +83,8 @@ class MainMap extends React.Component {
 
       const onDragEnd = (marker, stateKey) => {
         const lngLat = marker.getLngLat()
+        const newPosition = [lngLat.lng, lngLat.lat]
+        console.log(stateKey, newPosition)
 
         this.setState({
           [stateKey]: [
@@ -88,6 +93,7 @@ class MainMap extends React.Component {
           ]
         })
         getRoute(this.state.start, this.state.finish)
+        this.props.dispatch(updatePosition(stateKey, newPosition))
       }
 
       const finishMarker = new mapboxgl.Marker({
@@ -117,4 +123,4 @@ class MainMap extends React.Component {
     }
 }
 
-export default MainMap
+export default connect()(MainMap)

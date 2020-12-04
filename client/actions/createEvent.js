@@ -1,17 +1,15 @@
-import { fetchEventsAPI } from '../apis/events'
+import { addEventAPI } from '../apis/events'
 
-export const CREATE_EVENT = 'CREATE_EVENT'
+export const UPDATE_POSITION = 'UPDATE_POSITION'
 
-export const createEvent = (newEvent) => {
+export const updatePosition = (marker, newPosition) => {
   return {
-    type: CREATE_EVENT,
-    newEvent
+    type: UPDATE_POSITION,
+    marker,
+    newPosition
   }
 }
 
-export const fetchEvents = () => {
-  return dispatch => {
-    fetchEventsAPI()
-      .then(event => dispatch(createEvent(event)))
-  }
+export const addEvent = (newEvent) => {
+  addEventAPI(newEvent)
 }
