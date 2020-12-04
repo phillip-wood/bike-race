@@ -7,8 +7,12 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Navbar from './Navbar'
 import CreateEvent from './CreateEvent'
-import { EventDetails } from './EventDetails'
-
+import Events from './Events'
+import Comments from './Comments'
+import UserProfile from './UserProfile'
+import CreateUser from './CreateUser'
+import EventDetails from './EventDetails'
+import UserById from './UserById'
 
 export class App extends React.Component {
   componentDidMount () {
@@ -20,16 +24,29 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component= {Home} />
-          <Route path='/events/:id' exact component= {EventDetails} />
-          <Route path='/createEvent' exact component={CreateEvent} />
-        </Switch>
+        {/* <Navbar /> */}
+          <Route exact path='/' component= {Home} />
+          {this.props.users.length &&  
+          <Switch>
+            <Route path='/createEvent' exact component={CreateEvent} />
+            <Route exact path='/events' component= {Events} />
+            <Route exact path='/events/:id' component={EventDetails} />
+            <Route exact path='/users/active' component={UserProfile} />
+            <Route exact path='/users/new' component= {CreateUser} />
+            <Route exact path='/users/:id' component= {UserById}/>
+            <Route exact path='/events/:id/comments' component= {Comments}/>
+          </Switch>
+          }
       </Router>
       </>
     )
   }
 }
 
-export default connect()(App)
+function ms2p(globalState){
+  return {
+    users: globalState.users
+  }
+}
+
+export default connect(ms2p)(App)
