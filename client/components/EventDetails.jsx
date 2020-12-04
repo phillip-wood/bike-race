@@ -8,6 +8,14 @@ class EventDetails extends React.Component{
   render(){
 
     let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
+    
+    
+    let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
+    let raceDate = raceFullDate.slice(0,15)
+    let raceTime = raceFullDate.slice(17,21)
+
+    console.log(raceFullDate)
+  
     const addUserToEvent= ()=>{
       const addEvent={
           user_id: this.props.activeUser.id,
@@ -39,7 +47,6 @@ class EventDetails extends React.Component{
           )
         
       }
-     
   }
     return (
       <>
@@ -50,7 +57,8 @@ class EventDetails extends React.Component{
       </div>
       <div className='content_container'>
         Event Name: {eventDeatils.eventName}<br/>
-        Start Time: {eventDeatils.startTime}<br/>
+        Start Date: {raceDate}<br/>
+        Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
         List of PEEPS:
         <ul>
