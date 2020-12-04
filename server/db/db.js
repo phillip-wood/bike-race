@@ -16,6 +16,10 @@ function getUsers (db = connection) {
   return db('users').select()
 }
 
+function addEvent (newEvent, db = connection) {
+  return db('events').insert(newEvent)
+}
+
 function addUser (user, db = connection) {
   return db('users').insert(user)
 }
@@ -29,6 +33,7 @@ module.exports = {
   getComments,
   getAttendees,
   getUsers,
+  addEvent,
   addUser,
   addComment,
 }
