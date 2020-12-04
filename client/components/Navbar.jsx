@@ -50,7 +50,7 @@ function Navbar(props) {
             </li>
             <li className='nav-item'>
             {props.activeUser && 
-              <Link to='/eventsPage' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/events' className='nav-links' onClick={closeMobileMenu}>
                 Events Page
               </Link>
             }
