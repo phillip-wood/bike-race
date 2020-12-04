@@ -6,7 +6,7 @@ class PastEvents extends React.Component {
   render() {
     return (
       <>
-      <h1>Past Events</h1>
+      <h1 className='pastEventsHeader'>Past Events</h1>
          <ul>
         {this.props.events.map( event => { 
             //declears new date varible for current time/date

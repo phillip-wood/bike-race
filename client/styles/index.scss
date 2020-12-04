@@ -1,11 +1,24 @@
 @import "./userProfile.scss";
 @import "./singleEventMap.scss";
-
 @import "./navbar.scss";
 @import "./home.scss";
 @import "./map.scss";
 @import "./adam-test-normalize.scss";
 @import "./create-event.scss";
 @import "./home.scss";
-
 @import "./singleEventMap.scss";
+@import "./edit-user.scss";
+@import "./current-events.scss";
+@import "./past-events.scss";
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+body {
+  
+  font-family: 'Raleway', sans-serif;
+}
+
+html {
+    background-color: #2D3142;
+}
