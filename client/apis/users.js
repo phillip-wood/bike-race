@@ -5,3 +5,11 @@ export const fetchUsersAPI = () => {
     .get('/api/users')
     .then(res => res.body)
 }
+
+export const addUserAPI = (user) => {
+  return request
+    .post('/api/users')
+    .send(user)
+    .then(res => res.body)
+}
+

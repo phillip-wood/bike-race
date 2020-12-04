@@ -6,9 +6,17 @@ export const fetchEventsAPI = () => {
     .then(res => res.body)
 }
 
-export const addTaskAPI = (eventObj) => {
+export const addEventAPI = eventObj => {
   return request
     .post('/api/events/new')
     .send(eventObj)
+    .then(res => res.body)
+}
+
+
+export const addCommentAPI = comment => {
+  return request
+    .post('/api/events/addcomment')
+    .send(comment)
     .then(res => res.body)
 }
