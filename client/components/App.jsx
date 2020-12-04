@@ -27,7 +27,6 @@ export class App extends React.Component {
       <>
       <Router>
         {/* <Navbar/> */}
-        <a href="/events/:id/comments">my page</a>
           <Route exact path='/' component= {Home} />
           {this.props.users.length &&  
           <Switch>
