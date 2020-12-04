@@ -3,9 +3,14 @@ import { connect } from 'react-redux'
 
 function UserById(props){
 
-  {console.log(props.users[0].id)}
+  let thisUser = props.users.find(user => user.id == props.match.params.id)
+
   return (
-    <h1></h1>
+    <div>
+      <h1>{thisUser.username}</h1>
+      <img src={thisUser.imgURL} alt="No profile picture available"/>
+      <h5>{thisUser.email}</h5>
+    </div>
 
   )
 }
