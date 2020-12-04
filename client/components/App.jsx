@@ -10,6 +10,7 @@ import Events from './Events'
 import UserProfile from './UserProfile'
 import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
+import EditUser from './EditProfileForm'
 
 
 
@@ -23,13 +24,14 @@ export class App extends React.Component {
     return (
       <>
       <Router>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Switch>
           <Route exact path='/events' component= {Events} />
           <Route exact path='/' component= {Home} />
           <Route exact path='/events/:id' component={EventDetails} />
           <Route exact path='/users/active' component={UserProfile} />
           <Route exact path='/users/new' component= {CreateUser} />
+          <Route exact path='/users/edit/:id' component= {EditUser} />
         </Switch>
       </Router>
       </>
