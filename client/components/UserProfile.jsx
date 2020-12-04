@@ -4,23 +4,10 @@ import { Link } from 'react-router-dom'
 
 export class UserProfile extends React.Component {
 
-
-  //   handleChange = evt => {
-     
-  //   }
-
-  //   handleSubmit = evt => {
-  //       evt.preventDefault() 
-
-  //   }
-
-
-  // componentDidMount() {
-
-  // }
-
+  
   render() {
-
+    const currentTime = Date.now()/1000 
+    console.log(currentTime)
     return (
       this.props.activeUser ? <div>
          <h1>Profile</h1>
@@ -34,15 +21,31 @@ export class UserProfile extends React.Component {
           </div>
           <div>
             <h3>Upcoming events</h3>
-            <ul>
-              <li>event</li>
-            </ul>
-          </div>
+              {this.props.events.map((event) => {
+                if(event.startTime > currentTime){
+                return (
+                  <ul key={event.id}>
+                    <Link to={`/events/${event.id}`}>
+                    <li>{event.eventName}</li>
+                    </Link>
+                  </ul>
+                )
+                }
+              })}
+              </div>
           <div>
             <h3>Past events</h3>
-            <ul>
-              <li></li>
-            </ul>
+            {this.props.events.map((event) => {
+              if(event.startTime < currentTime){
+                return (
+                  <ul key={event.id}>
+                    <Link to={`/events/${event.id}`}>
+                    <li>{event.eventName}</li>
+                    </Link>
+                  </ul>
+                )
+              }
+              })}
           </div>
           <Link to='/editProfile'>
           <button>Edit profile</button>
