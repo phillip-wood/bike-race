@@ -24,7 +24,7 @@ class PastEvents extends React.Component {
             return (
                 <li key={event.id} 
                     className='event--li'>
-                    <Link href={`events/${event.id}`}>
+                    <Link to={`events/${event.id}`}>
                         <h2>{event.eventName}</h2>
                         <h4>{`Time ${raceTime}`}</h4>
                         <h4>{`Date ${raceDate}`}</h4>
