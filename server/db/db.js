@@ -17,11 +17,11 @@ function getUsers (db = connection) {
 }
 
 function addEvent (newEvent, db = connection) {
-  return db('events').insert(newEvent)
+  return db('events').insert(newEvent, 'id')
 }
 
 function addUser (user, db = connection) {
-  return db('users').insert(user)
+  return db('users').insert(user, 'id')
 }
 
 function editUser (id, user, db = connection) {
@@ -29,7 +29,7 @@ function editUser (id, user, db = connection) {
 }
 
 function addComment (comment, db = connection) {
-  return db('comments').insert(comment)
+  return db('comments').insert(comment, 'id')
 }
 
 
