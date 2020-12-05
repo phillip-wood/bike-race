@@ -20,3 +20,19 @@ export const addCommentAPI = comment => {
     .send(comment)
     .then(res => res.body)
 }
+
+
+export const addUserToEventAPI = activeUser =>{
+  return request
+    .post('/api/events/addtoevent')
+    .send(activeUser)
+    .then(res => {res.body})
+}
+
+export const removeUserFromEventAPI = activeUser =>{
+  return request
+    .del('/api/events/removefromevent')
+    .send(activeUser)
+    .then(res => {res.body})
+}
+

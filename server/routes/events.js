@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     .then(arr => {
       events.forEach(event => {
         const attendeesArr = arr.filter(id => id.event_id === event.id)
-        event.attendees = attendeesArr.map(item => item.id)
+        event.attendees = attendeesArr.map(item => item.user_id)
       })
       return events
     })
@@ -54,5 +54,33 @@ router.post('/addcomment', (req, res) => {
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
+
+
+//add user to current race
+router.post ('/addtoevent', (req,res) =>{
+    return db.addUserToEvent(req.body)
+    .then(()=> {
+      res.json({})
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
+})
+
+//Removes User from Event if they click button
+router.delete ('/removefromevent', (req,res) =>{
+    return db.removeUserFromEvent(req.body)
+    .then(()=> {
+      res.json({})
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
+})
+
+
+
 
 module.exports = router
