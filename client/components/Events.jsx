@@ -18,7 +18,8 @@ class Events extends React.Component {
 
 function mapStateToProps (globalState) {
     return {
-      events: globalState.events
+      events: globalState.events,
+      activeUser: globalState.activeUser
     }
   }
   

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 
-
 class CurrentEvents extends React.Component {
     
   render() {
@@ -44,7 +43,8 @@ class CurrentEvents extends React.Component {
 
 function mapStateToProps (globalState) {
     return {
-      events: globalState.events
+      events: globalState.events,
+      activeUser: globalState.activeUser
     }
   }
   

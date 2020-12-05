@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-
 class PastEvents extends React.Component {
 
   render() {
@@ -25,12 +24,11 @@ class PastEvents extends React.Component {
             return (
                 <li key={event.id} 
                     className='event--li'>
-                    <Link to={`events/${event.id}`}>
+                    <Link href={`events/${event.id}`}>
                         <h2>{event.eventName}</h2>
                         <h4>{`Time ${raceTime}`}</h4>
                         <h4>{`Date ${raceDate}`}</h4>
                         <p>{event.description}</p>
-                        
                     </Link>
                 </li>
             )
@@ -43,7 +41,8 @@ class PastEvents extends React.Component {
 
 function mapStateToProps (globalState) {
     return {
-      events: globalState.events
+      events: globalState.events,
+      activeUser: globalState.activeUser
     }
   }
   
