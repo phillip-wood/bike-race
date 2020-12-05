@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 class CurrentEvents extends React.Component {
@@ -25,12 +26,12 @@ class CurrentEvents extends React.Component {
             return (
                 <li key={event.id} 
                       >
-                    <a href={`events/${event.id}`}>
+                    <Link to={`events/${event.id}`}>
                         <h2 className='eventListTitle'>{event.eventName}</h2>
                         <h4>{`Time: ${raceTime}`}</h4> 
                         <h4>{`Date: ${raceDate}`}</h4>
                         <p>{event.description}</p>
-                    </a>
+                    </Link>
                 </li>
             )
             }})}
@@ -42,7 +43,8 @@ class CurrentEvents extends React.Component {
 
 function mapStateToProps (globalState) {
     return {
-      events: globalState.events
+      events: globalState.events,
+      activeUser: globalState.activeUser
     }
   }
   
