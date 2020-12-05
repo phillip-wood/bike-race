@@ -42,7 +42,6 @@ router.post('/new', (req, res) => {
     })
 })
 
-
 //add new comment to event
 router.post('/addcomment', (req, res) => {
   return db.addComment(req.body)
@@ -54,7 +53,6 @@ router.post('/addcomment', (req, res) => {
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
-
 
 //add user to current race
 router.post ('/addtoevent', (req,res) =>{
@@ -79,8 +77,6 @@ router.delete ('/removefromevent', (req,res) =>{
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
-
-
 
 
 module.exports = router

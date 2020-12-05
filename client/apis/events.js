@@ -13,7 +13,6 @@ export const addEventAPI = eventObj => {
     .then(res => res.body)
 }
 
-
 export const addCommentAPI = comment => {
   return request
     .post('/api/events/addcomment')
