@@ -61,7 +61,7 @@ class EventDetails extends React.Component{
     return (
       <>
       { eventDeatils && (<div>
-      <h1>{eventDeatils.eventName}<br/></h1>
+      <h1 className="event_name">{eventDeatils.eventName}<br/></h1>
       <div>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
       </div>
