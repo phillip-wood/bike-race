@@ -36,30 +36,45 @@ function Navbar(props) {
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
+
+            {!props.activeUser &&
+              <li className='nav-item'>
+                <Link to='/users/new' className='nav-links' onClick={closeMobileMenu}>
+                  Create Profile
               </Link>
-            </li>
-            <li className='nav-item'>
-              {props.activeUser && 
-              <Link to='/createEvent' className='nav-links' onClick={closeMobileMenu}>
-                Create Event
-              </Link>
-              }
-            </li>
-            <li className='nav-item'>
-            {props.activeUser && 
-              <Link to='/events' className='nav-links' onClick={closeMobileMenu}>
-                Events Page
-              </Link>
+              </li>
             }
-            </li>
+
+       
+              <li className='nav-item'>
+                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                  Home
+              </Link>
+              </li>
+            
+
+            {props.activeUser &&
+              <li className='nav-item'>
+                <Link to='/createEvent' className='nav-links' onClick={closeMobileMenu}>
+                  Create Event
+              </Link>
+              </li>
+            }
+
+            {props.activeUser &&
+              <li className='nav-item'>
+                <Link to='/events' className='nav-links' onClick={closeMobileMenu}>
+                  Events Page
+              </Link>
+              </li>
+            }
+
             <li className='nav-item'>
               <Link to='/users/active' className='nav-links' onClick={closeMobileMenu}>
                 {props.activeUser && props.activeUser.username}
               </Link>
             </li>
+
           </ul>
           {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
         </div>
@@ -68,7 +83,7 @@ function Navbar(props) {
   );
 }
 
-function ms2p(globalState){
+function ms2p(globalState) {
   return {
     activeUser: globalState.activeUser
   }
