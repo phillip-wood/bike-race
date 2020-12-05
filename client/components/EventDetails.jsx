@@ -61,7 +61,7 @@ class EventDetails extends React.Component{
     return (
       <>
       { eventDeatils && (<div>
-      <h1>{eventDeatils.eventName}<br/></h1>
+      <h1 className="event_name">{eventDeatils.eventName}<br/></h1>
       <div>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
       </div>
@@ -77,7 +77,7 @@ class EventDetails extends React.Component{
                if(att.id == attendent){
                 return(
                   <>
-                  <li key={att.id}>
+                  <li className="each_user"key={att.id}>
                     <Link to={`/users/${att.id}`}>
                       {att.username} <br/>
                       {att.bikeType}
@@ -91,7 +91,7 @@ class EventDetails extends React.Component{
             Player Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
             <Link to={`/events/${eventDeatils.id}/comments`} >
             Comments: {eventDeatils.comments.length}
-            </Link>
+            </Link><br/>
             {joinOrLeaveEvent()}
            
       </div>
