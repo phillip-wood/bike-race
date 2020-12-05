@@ -83,13 +83,13 @@ class MainMap extends React.Component {
 
       const onDragEnd = (marker, stateKey) => {
         const lngLat = marker.getLngLat()
-        const newPosition = [lngLat.lng, lngLat.lat]
+        const newPosition = [lngLat.lng.toFixed(4), lngLat.lat.toFixed(4)]
         console.log(stateKey, newPosition)
 
         this.setState({
           [stateKey]: [
-            lngLat.lng,
-            lngLat.lat
+            lngLat.lng.toFixed(4),
+            lngLat.lat.toFixed(4)
           ]
         })
         getRoute(this.state.start, this.state.finish)
@@ -112,6 +112,8 @@ class MainMap extends React.Component {
 
       startMarker.on('dragend', () => { onDragEnd(startMarker, 'start') })
       finishMarker.on('dragend', () => { onDragEnd(finishMarker, 'finish') })
+      this.props.dispatch(updatePosition('start', this.state.start))
+      this.props.dispatch(updatePosition('finish', this.state.finish))
     }
 
     render () {

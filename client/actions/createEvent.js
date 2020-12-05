@@ -1,4 +1,5 @@
 import { addEventAPI } from '../apis/events'
+import { fetchEvents } from './events'
 
 export const UPDATE_POSITION = 'UPDATE_POSITION'
 
@@ -11,5 +12,9 @@ export const updatePosition = (marker, newPosition) => {
 }
 
 export const addEvent = (newEvent) => {
-  addEventAPI(newEvent)
+  return dispatch => {
+    console.log(newEvent)
+    addEventAPI(newEvent)
+      .then(dispatch(fetchEvents()))
+  }
 }
