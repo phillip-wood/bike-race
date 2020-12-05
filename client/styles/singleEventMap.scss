@@ -12,3 +12,7 @@
 .finish{
   overflow: hidden;
 }
+
+.mapbox-improve-map, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-attrib{
+  display: none;
+}
