@@ -1,9 +1,14 @@
 .singleMapContainer{
-  overflow:visible;
-  position: fixed;
-  width:40vw;
+  overflow:hidden;
+  position: relative;
+  height: 20vh;
+  width: 100vw;
 }
 .content_container{
-  text-align: right;
+  text-align: center;
   align-content: right;
+  padding-top: 15px 
+}
+.finish{
+  overflow: hidden;
 }

@@ -102,7 +102,8 @@ class SingleEventMap extends React.Component {
 
       const startMarker = new mapboxgl.Marker({
         draggable: false,
-        color: '#00ff00'
+        color: '#00ff00',
+        
       })
         .setLngLat([this.props.start[1], this.props.start[0]])
         .addTo(map)

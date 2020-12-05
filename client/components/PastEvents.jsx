@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 
 class PastEvents extends React.Component {
 
@@ -23,13 +25,13 @@ class PastEvents extends React.Component {
             return (
                 <li key={event.id} 
                     className='event--li'>
-                    <a href={`events/${event.id}`}>
+                    <Link to={`events/${event.id}`}>
                         <h2>{event.eventName}</h2>
                         <h4>{`Time ${raceTime}`}</h4>
                         <h4>{`Date ${raceDate}`}</h4>
                         <p>{event.description}</p>
                         
-                    </a>
+                    </Link>
                 </li>
             )
             }})}
