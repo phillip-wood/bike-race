@@ -8,7 +8,7 @@ class SingleEventMap extends React.Component {
       initial: {
         lng:  this.props.start[1],
         lat: this.props.start[0],
-        zoom: 12
+        zoom: 13
       },
       start: [
         this.props.start[1],
@@ -25,7 +25,11 @@ class SingleEventMap extends React.Component {
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [this.state.initial.lng, this.state.initial.lat],
-        zoom: this.state.initial.zoom
+        zoom: this.state.initial.zoom,
+        fitBounds: [
+          [32.958984, -5.353521],
+          [43.50585, 5.615985]
+          ]
       })
 
       const getRoute = (start,end) => {
