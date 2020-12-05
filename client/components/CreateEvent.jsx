@@ -11,8 +11,8 @@ class CreateEvent extends React.Component {
       creator_id: this.props.activeUser.id,
       eventName: null,
       description: null,
-      startPoint: null,
-      endPoint: null,
+      startPoint: [],
+      endPoint: [],
       startTime: null,
       maxGroupSize: 8,
       distance: null
@@ -40,15 +40,15 @@ class CreateEvent extends React.Component {
     const epoch = Math.floor(new Date(str) / 1000)
     const newEventObj = {
       ...this.state.newEvent,
-      startPoint: this.props.createEvent.start,
-      endPoint: this.props.createEvent.finish,
+      startPoint: '[' + this.props.createEvent.start + ']',
+      endPoint: [this.props.createEvent.finish],
       startTime: epoch
     }
     this.setState({
       newEvent: {
         ...this.state.newEvent,
-        startPoint: this.props.createEvent.start,
-        endPoint: this.props.createEvent.finish,
+        startPoint: [this.props.createEvent.start],
+        endPoint: [this.props.createEvent.finish],
         startTime: epoch
       }
     })
