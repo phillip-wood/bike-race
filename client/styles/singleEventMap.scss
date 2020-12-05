@@ -1,0 +1,18 @@
+.singleMapContainer{
+  overflow:hidden;
+  position: relative;
+  height: 20vh;
+  width: 100vw;
+}
+.content_container{
+  text-align: center;
+  align-content: right;
+  padding-top: 15px 
+}
+.finish{
+  overflow: hidden;
+}
+
+.mapbox-improve-map, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-attrib{
+  display: none;
+}

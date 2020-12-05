@@ -45,7 +45,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "knex": "^0.21.12",
+    "mapbox-gl": "^1.13.0",
     "pg": "^8.5.1",
+    "react-contenteditable": "^3.3.5",
     "superagent": "^6.1.0"
   },
   "devDependencies": {
