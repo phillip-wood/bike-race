@@ -36,7 +36,7 @@ export class EditUser extends React.Component {
       <div>
         <h1 className='editUserHeader'>Edit your profile, {this.props.activeUser.username}</h1>
         <div className='editUserBox'>
-        <form onSubmit={this.handleSubmit} className='editUserContainer'>
+        <form className='editUserContainer'>
 
           <label htmlFor="username" className='editUserLabel'>Username:</label>
           <input  className='editUserInput'
@@ -74,11 +74,11 @@ export class EditUser extends React.Component {
           </select>
           <br/>
         </form>
-        <div class="button" id="button-5">
-          <div id="translate"></div>
-            <button type="submit">Confirm</button>
+          <div className="button" id="button-5">
+            <div id="translate"></div>
+              <button type="submit" onClick={this.handleSubmit}>Confirm</button>
+            </div>
           </div>
-        </div>
       </div>
     )
   }
