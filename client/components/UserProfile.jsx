@@ -52,13 +52,14 @@ export class UserProfile extends React.Component {
               }
             })}
           </div>
+          <div className="button" id="button-5">
+            <div id="translate"></div>
+            <Link to="/users/active/edit">
+              <button>Edit Profile</button>
+            </Link>
+          </div>
         </div>
-        <div className="button" id="button-5">
-          <div id="translate"></div>
-          <a href="/users/active/edit">Edit Profile</a>
-        </div>
-
-      </div> : null
+      </div > : null
     )
   }
 }
