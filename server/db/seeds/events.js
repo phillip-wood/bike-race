@@ -8,8 +8,8 @@ exports.seed = function (knex) {
         {
           eventName: "Pedle to the pub",
           description: "fun race to the pub",
-          startPoint: "[-41.2970, 174.7739]",
-          endPoint: "[-41.2938, 174.7840]",
+          startPoint: "[174.7739, -41.2970]",
+          endPoint: "[174.7840, -41.2938]",
           startTime: "1607706000",
           maxGroupSize: 5,
           distance: "15",
@@ -18,8 +18,8 @@ exports.seed = function (knex) {
         {
           eventName: "more peddling",
           description: "lets go to the pubb",
-          startPoint: "[-41.2970, 174.7739]",
-          endPoint: "[-41.2938, 174.7840]",
+          startPoint: "[174.7739, -41.2970]",
+          endPoint: "[174.7840, -41.2938]",
           startTime: "1607703433",
           maxGroupSize: 5,
           distance: "2",
@@ -28,8 +28,8 @@ exports.seed = function (knex) {
         {
           eventName: "less peddling more drinking",
           description: "lets go to the pubb",
-          startPoint: "[-41.2970, 174.7739]",
-          endPoint: "[-41.2938, 174.7840]",
+          startPoint: "[174.7739, -41.2970]",
+          endPoint: "[174.7840, -41.2938]",
           startTime: "1507703433",
           maxGroupSize: 7,
           distance: "2",
