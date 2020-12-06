@@ -6,6 +6,7 @@ exports.up = (knex) => {
       table.text('imgURL')
       table.integer('eventsAttended')
       table.string('bikeType')
+      table.string('hash')
     })
   }
   
