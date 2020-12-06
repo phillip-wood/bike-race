@@ -3,12 +3,14 @@ const path = require('path')
 
 const server = express()
 
+const authRoutes = require('./routes/auth')
 const eventRoutes = require('./routes/events')
 const userRoutes = require('./routes/users')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
+server.use('/api/auth', authRoutes)
 server.use('/api/events', eventRoutes)
 server.use('/api/users', userRoutes)
 

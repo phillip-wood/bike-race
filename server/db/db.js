@@ -43,6 +43,14 @@ function removeUserFromEvent(activeUser, db = connection){
   return db('users_events').where('event_id',activeUser.event_id).delete(activeUser)
 }
 
+function registerUser (newUser, db = connection) {
+  return db('users').insert(newUser)
+}
+
+function getRegisteredUser (id, db = connection) {
+  return db('users').select()
+    .where(id, 'id')
+}
 
 module.exports = {
   getEvents,
@@ -54,5 +62,7 @@ module.exports = {
   addComment,
   addUserToEvent,
   editUser,
+  getRegisteredUser,
+  registerUser,
   removeUserFromEvent
 }
