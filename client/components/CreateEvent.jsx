@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Redirect } from 'react-router-dom'
 import MainMap from './MainMap'
 
 import { addEvent } from '../actions/createEvent'
@@ -16,7 +16,8 @@ class CreateEvent extends React.Component {
       startTime: null,
       maxGroupSize: 8,
       distance: null
-    }
+    },
+    redirect: false
   }
 
   handleChange = (event) => {
@@ -52,10 +53,32 @@ class CreateEvent extends React.Component {
         startTime: epoch
       }
     })
-    this.props.dispatch(addEvent(newEventObj))
+    if(this.state.newEvent.startPoint.length == 0 || this.state.newEvent.endPoint.length ==0) {
+      alert("Please Select start and end location")
+    }else{
+      this.props.dispatch(addEvent(newEventObj))
+      this.setState({redirect: true})
+    }
+  }
+
+  getTodaysDate = () => {
+    let tzoffset = (new Date()).getTimezoneOffset() * 60000 //offset in milliseconds
+    let localISODate = (new Date(Date.now() - tzoffset)).toISOString().split('T')[0]
+    return localISODate
+  }
+
+  getCurrentTime = () => {
+    let tzoffset = (new Date()).getTimezoneOffset() * 60000
+    let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().split('T')[1].split('.')[0]
+    return localISOTime
   }
 
   render () {
+    const redirect = this.state.redirect
+    if(redirect) {
+      return <Redirect to='/events' />
+    }
+
     return (
       <>
         <MainMap />
@@ -64,8 +87,16 @@ class CreateEvent extends React.Component {
             <input type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
             <textarea id="" cols="30" rows="5" name='description' placeholder='A brief description of your event' onChange={this.handleChange}></textarea>
             <label htmlFor="time">Event starts:</label>
-            <input type="time" name='time' placeholder='time' onChange={this.handleTimeChange} />
-            <input type="date" name='date' placeholder='date' onChange={this.handleTimeChange} />
+            <input type="time" 
+            name='time' 
+            placeholder='time' 
+            min={this.getCurrentTime()}
+            onChange={this.handleTimeChange} />
+            <input type="date" 
+            name='date' 
+            placeholder='date' 
+            min={this.getTodaysDate()} 
+            onChange={this.handleTimeChange} />
             <input type="submit" name='submit' />
           </form>
         </div>

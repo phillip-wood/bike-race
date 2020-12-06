@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import Login from './Login'
 
 
-
 export class Home extends React.Component {
-
+  
   render() {
+
     return (
       <div>
         <div className='homeInfo'>

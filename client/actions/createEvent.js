@@ -13,7 +13,6 @@ export const updatePosition = (marker, newPosition) => {
 
 export const addEvent = (newEvent) => {
   return dispatch => {
-    console.log(newEvent)
     addEventAPI(newEvent)
       .then(dispatch(fetchEvents()))
   }
