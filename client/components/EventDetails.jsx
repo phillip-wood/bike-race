@@ -80,8 +80,7 @@ class EventDetails extends React.Component{
                 <div key={att.id}>
                   <li key={att.id} className="each_user" >
                     <Link to={`/users/${att.id}`}>
-                      {att.username} <br/>
-                      {att.bikeType}
+                      {att.username} 
                     </Link>
                   </li>
                 </div>

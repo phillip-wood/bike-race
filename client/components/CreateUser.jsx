@@ -53,7 +53,7 @@ export class CreateUser extends React.Component {
     let file = event.target.files[0]
     console.log()
     S3FileUpload.uploadFile(file, config)
-    .then(data => console.log(data.location))
+    .then(data =>  this.setState({imgURL: data.location}))
     .catch(err => console.error(err))
   }
 
