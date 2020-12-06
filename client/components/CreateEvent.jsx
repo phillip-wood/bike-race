@@ -53,8 +53,12 @@ class CreateEvent extends React.Component {
         startTime: epoch
       }
     })
-    this.props.dispatch(addEvent(newEventObj))
-    this.setState({redirect: true})
+    if(this.state.newEvent.startPoint.length == 0 || this.state.newEvent.endPoint.length ==0) {
+      alert("Please Select start and end location")
+    }else{
+      this.props.dispatch(addEvent(newEventObj))
+      this.setState({redirect: true})
+    }
   }
 
   getTodaysDate = () => {
