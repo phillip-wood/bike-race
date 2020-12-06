@@ -7,8 +7,6 @@ import thunk from 'redux-thunk'
 import reducers from './reducers'
 import App from './components/App'
 
-// import serviceWorker from '../serviceworker'
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 
@@ -20,5 +18,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app')
   )
 })
-
-// serviceWorker.register()
