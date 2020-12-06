@@ -8,7 +8,7 @@ class EventDetails extends React.Component{
   render(){
 
     let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
-    
+
     const currentTime = String(new Date(Date.now()/1000 ))
     let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
     let raceDate = raceFullDate.slice(0,15)
@@ -57,6 +57,7 @@ class EventDetails extends React.Component{
   }
     return (
       <>
+      
       { eventDeatils && 
       <div>
       <h1 className="event_name">{eventDeatils.eventName}<br/></h1>
@@ -67,7 +68,9 @@ class EventDetails extends React.Component{
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
-        List of PEEPS:
+       
+        {joinOrLeaveEvent()} <br/>
+        Attending:
         <ul >
         {eventDeatils.attendees.map(attendent => {
             return(
@@ -87,11 +90,10 @@ class EventDetails extends React.Component{
             })}
         </ul>
         <div>
-             Player Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
+             Attendee Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
             <Link to={`/events/${eventDeatils.id}/comments`} >
             Comments: {eventDeatils.comments.length}
             </Link><br/>
-            {joinOrLeaveEvent()}
         </div>
       </div>
       </div>
