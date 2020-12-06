@@ -7,8 +7,7 @@ import Login from './Login'
 export class Home extends React.Component {
   
   render() {
-    
-    console.log (process.env) 
+
     return (
       <div>
         <div className='homeInfo'>
