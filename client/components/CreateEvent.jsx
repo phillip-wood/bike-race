@@ -41,7 +41,7 @@ class CreateEvent extends React.Component {
     const newEventObj = {
       ...this.state.newEvent,
       startPoint: '[' + this.props.createEvent.start + ']',
-      endPoint: [this.props.createEvent.finish],
+      endPoint: '[' + this.props.createEvent.finish + ']',
       startTime: epoch
     }
     this.setState({
