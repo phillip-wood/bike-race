@@ -3,6 +3,15 @@ import { connect } from 'react-redux'
 import { addNewUser, changeActiveUser } from '../actions/users'
 import { Redirect } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
+import S3FileUpload from 'react-s3';
+
+const config = {
+  bucketName: 'bike-race',
+  dirName: 'photos', /* optional */
+  region: 'ap-southeast-2',
+  accessKeyId: `${process.env.AWS_ACCESS_KEY}`,
+  secretAccessKey: `${process.env.AWS_SECRET_API_KEY}`,
+}
 
 export class CreateUser extends React.Component {
   state = {
@@ -12,6 +21,7 @@ export class CreateUser extends React.Component {
     bikeType: '',
     redirect: false
   }
+  
 
   handleChange = evt => {
     this.setState({
@@ -34,6 +44,19 @@ export class CreateUser extends React.Component {
     })
   }
 
+  handleTakePhoto = (dataUri) => {
+    this.setState({imgURL: dataUri})
+    console.log(this.state);
+  }
+  
+  handleImageChange =(event)=>{
+    let file = event.target.files[0]
+    console.log()
+    S3FileUpload.uploadFile(file, config)
+    .then(data => console.log(data.location))
+    .catch(err => console.error(err))
+  }
+
   render() {
     const { redirect } = this.state
     if (redirect) {
@@ -47,11 +70,11 @@ export class CreateUser extends React.Component {
 
           <label htmlFor="imgURL">profile picture</label>
           <input className='formInput'
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.imgURL}
-            name="imgURL" />
-
+            type="file"
+            onChange={this.handleImageChange}
+            name="imgURL"
+            accept="image/*"
+             />
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" name="username"
             onChange={this.handleChange}
