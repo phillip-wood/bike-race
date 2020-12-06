@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Redirect } from 'react-router-dom'
 import MainMap from './MainMap'
 
 import { addEvent } from '../actions/createEvent'
@@ -16,7 +16,8 @@ class CreateEvent extends React.Component {
       startTime: null,
       maxGroupSize: 8,
       distance: null
-    }
+    },
+    redirect: false
   }
 
   handleChange = (event) => {
@@ -53,9 +54,15 @@ class CreateEvent extends React.Component {
       }
     })
     this.props.dispatch(addEvent(newEventObj))
+    this.setState({redirect: true})
   }
 
   render () {
+    const redirect = this.state.redirect
+    if(redirect) {
+      return <Redirect to='/events' />
+    }
+
     return (
       <>
         <MainMap />
