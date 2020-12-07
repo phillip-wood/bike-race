@@ -1,14 +1,15 @@
 import { ACTIVE_USER_CHANGED, USER_UPDATED } from "../actions/users"
 
-let initial ={
-  id: 1,
-  username: 'wonderphil',
-  email: 'phillip.wood369@gmail.com',
-  imgURL: 'https://images.unsplash.com/photo-1528629297340-d1d466945dc5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1395&q=80',
-  bikeType: 'BMX'
-}
+// const initial = {
+//   id: 3,
+//   username: 'bonecrusher',
+//   email: 'rose@gmail.com',
+//   imgURL: 'https://alchetron.com/cdn/sarah-walker-bmx-rider-e5e6abf1-fd8c-4070-b41f-1eef9785984-resize-750.jpeg',
+//   eventsAttended: null,
+//   bikeType: 'road bike'
+// }
 
-const reducer = (state = initial, action) => {
+const reducer = (state = null, action) => {
   switch (action.type) {
 
     case ACTIVE_USER_CHANGED:

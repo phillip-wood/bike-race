@@ -8,15 +8,12 @@ class EventDetails extends React.Component{
   render(){
 
     let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
-    
+
     const currentTime = String(new Date(Date.now()/1000 ))
     let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
     let raceDate = raceFullDate.slice(0,15)
     let raceTime = raceFullDate.slice(17,21)
-    console.log(currentTime )
 
-    console.log(currentTime > raceFullDate)
-  
     const addUserToEvent= ()=>{
       if(eventDeatils.attendees.length == eventDeatils.maxGroupSize){
         alert('This reace is full soz')
@@ -60,8 +57,10 @@ class EventDetails extends React.Component{
   }
     return (
       <>
-      { eventDeatils && (<div>
-      <h1>{eventDeatils.eventName}<br/></h1>
+      
+      { eventDeatils && 
+      <div>
+      <h1 className="event_name">{eventDeatils.eventName}<br/></h1>
       <div>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
       </div>
@@ -69,34 +68,35 @@ class EventDetails extends React.Component{
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
-        List of PEEPS:
-        <ul>
+       
+        {joinOrLeaveEvent()} <br/>
+        Attending:
+        <ul >
         {eventDeatils.attendees.map(attendent => {
             return(
              this.props.users.map(att =>{
                if(att.id == attendent){
                 return(
-                  <>
-                  <li key={att.id}>
+                <div key={att.id}>
+                  <li key={att.id} className="each_user" >
                     <Link to={`/users/${att.id}`}>
-                      {att.username} <br/>
-                      {att.bikeType}
+                      {att.username} 
                     </Link>
                   </li>
-                </>
+                </div>
                 )}
               }))
             })}
         </ul>
-            Player Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
+        <div>
+             Attendee Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
             <Link to={`/events/${eventDeatils.id}/comments`} >
             Comments: {eventDeatils.comments.length}
-            </Link>
-            {joinOrLeaveEvent()}
-           
+            </Link><br/>
+        </div>
       </div>
       </div>
-      )}
+      }
       </>
     )
   }

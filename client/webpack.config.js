@@ -1,4 +1,6 @@
+const webpack = require('webpack')
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
@@ -9,10 +11,15 @@ module.exports = {
   },
   mode: 'development',
   plugins: [
+    new Dotenv(),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
       chunkFilename: '[id].css',
       ignoreOrder: false // Enable to remove warnings about conflicting order
+    }),
+    new webpack.EnvironmentPlugin({
+      AWS_ACCESS_KEY: '', 
+      AWS_SECRET_API_KEY: ''
     })
   ],
   module: {

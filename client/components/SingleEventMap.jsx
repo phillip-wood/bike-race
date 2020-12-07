@@ -6,17 +6,17 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFja2VuYWRhbSIsImEiOiJja2k3MHE1aDEwcmF2MnJvb
 class SingleEventMap extends React.Component {
     state = {
       initial: {
-        lng:  this.props.start[1],
-        lat: this.props.start[0],
+        lng:  this.props.start[0],
+        lat: this.props.start[1],
         zoom: 13
       },
       start: [
-        this.props.start[1],
-        this.props.start[0]
+        this.props.start[0],
+        this.props.start[1]
       ],
       finish: [
-        this.props.end[1],
-        this.props.end[0]
+        this.props.end[0],
+        this.props.end[1]
       ]
     }
     
@@ -101,14 +101,15 @@ class SingleEventMap extends React.Component {
         draggable: false,
         color: '#ff3300'
       })
-        .setLngLat([this.props.end[1], this.props.end[0]])
+        .setLngLat([this.props.end[0], this.props.end[1]])
         .addTo(map)
 
       const startMarker = new mapboxgl.Marker({
         draggable: false,
-        color: '#00ff00'
+        color: '#00ff00',
+        
       })
-        .setLngLat([this.props.start[1], this.props.start[0]])
+        .setLngLat([this.props.start[0], this.props.start[1]])
         .addTo(map)
 
       startMarker.on('dragend', () => { onDragEnd(startMarker, 'start') })

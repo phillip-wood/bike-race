@@ -38,7 +38,6 @@ export const addNewComment = (newComment, id) => {
   }
 }
 export const addUserToEvent = (activeUser) => {
-  console.log(activeUser)
   return {
     type: USER_ADDED_TO_EVENT,
     attendees: activeUser
@@ -47,7 +46,6 @@ export const addUserToEvent = (activeUser) => {
 }
 
 export const removeUserFromEvent = (activeUser) => {
-  console.log(activeUser)
   return {
     type:USER_REMOVE_FROM_EVENT,
     attendees: activeUser
