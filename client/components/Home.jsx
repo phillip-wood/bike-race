@@ -1,13 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Login from './Login'
-import Register from './Register'
 import ReactPlayer from 'react-player'
 
-
 export class Home extends React.Component {
-  
+
   render() {
 
     return (
@@ -28,40 +25,32 @@ export class Home extends React.Component {
               <p name="text" id="home-info">
                 Find and create rides and races to enjoy together
               </p>
-            
-            <div className="createEventBtn button" id="button-5">
-              <div id="translate"></div>
-              <Link to="/createEvent">
-                <button
-                  type="submit"
-                  name="create_event"
-                  className="actual-button"
-                >
-                  Create Race
+
+              <div className="createEventBtn button" id="button-5">
+                <div id="translate"></div>
+                <Link to={this.props.activeUser ? '/events/new' : '/login'}>
+                  <button
+                    type="submit"
+                    name="create_event"
+                    className="actual-button">
+                    Create Race
                 </button>
-              </Link>
-            </div>
-            <div className="listEventBtn button" id="button-5">
-              <div id="translate"></div>
-              <Link to="/events">
-                <button
-                  type="submit"
-                  name="view_event"
-                  className="actual-button"
-                >
-                  View Race
+                </Link>
+              </div>
+
+              <div className="listEventBtn button" id="button-5">
+                <div id="translate"></div>
+                <Link to={this.props.activeUser ? '/events' : '/login'}>
+                  <button
+                    type="submit"
+                    name="view_event"
+                    className="actual-button">
+                    View Race
                 </button>
-              </Link>
-            </div>
+                </Link>
+              </div>
             </div>
           </div>
-        {!this.props.activeUser && <Login />}
-        {!this.props.activeUser && <Register />}
-        </div>
-        <div className='listEventBtn'>
-          <Link to='/events'>
-            <button type="submit" name="view_event">View Race</button>
-          </Link>
         </div>
       </div>
     )
@@ -71,7 +60,7 @@ export class Home extends React.Component {
 function ms2p(globalState) {
   return {
     activeUser: globalState.activeUser,
-  };
+  }
 }
 
 export default connect(ms2p)(Home);
