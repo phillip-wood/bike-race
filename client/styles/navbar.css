@@ -35,14 +35,10 @@
   }
   
   .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
+    display: flex;
     list-style: none;
     text-align: center;
-    width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
   }
   
   .nav-item {
@@ -158,4 +154,9 @@
       color: #242424;
       transition: 250ms;
     }
+  }
+
+  .internal-nav-container{
+    display: flex;
+    justify-content: space-evenly;
   }

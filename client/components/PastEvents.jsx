@@ -18,18 +18,18 @@ class PastEvents extends React.Component {
             // converts epoch race time to date/time string then slice out what we need to display
             let raceFullDate = String(new Date(event.startTime * 1000))
             let raceDate = raceFullDate.slice(0,15)
-            let raceTime = raceFullDate.slice(17,21)
+            let raceTime = raceFullDate.slice(16,21)
            if(currentTime > event.startTime){
             return (
+              <div className='event-cards'>
                 <li key={event.id} 
                     className='event--li'>
                     <Link to={`events/${event.id}`}>
-                        <h2>{event.eventName}</h2>
-                        <h4>{`Time ${raceTime}`}</h4>
+                        <h2>{event.eventName}</h2></Link>
                         <h4>{`Date ${raceDate}`}</h4>
-                        <p>{event.description}</p>
-                    </Link>
+                        <h4>{`Time ${raceTime}`}</h4>
                 </li>
+              </div>
             )
             }})}
         </ul>
