@@ -52,6 +52,7 @@ function registerUser (newUser, db = connection) {
 }
 
 function getRegisteredUser (username, db = connection) {
+  console.log('Added to db')
   return db('users').select()
     .where('username', username)
     .first()

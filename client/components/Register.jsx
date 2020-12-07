@@ -1,7 +1,6 @@
 import React from 'react'
-import { register, isAuthenticated } from 'authenticare/client'
 
-import { baseApiUrl as baseUrl } from '../config'
+import { registerNewUserAPI } from '../apis/auth'
 
 class Register extends React.Component {
   state = {
@@ -18,15 +17,27 @@ class Register extends React.Component {
     })
   }
 
-  handleClick = () => {
-    const { username, password } = form
-    register({ username, password }, { baseUrl })
-      .then((token) => {
-        if (isAuthenticated()) {
-          props.history.push('/')
-        }
-      })
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const newUser = { ...this.state }
+    console.log('Submit: ', newUser)
+    registerNewUserAPI(newUser)
   }
+
+  // this is how we save and access the token from the window.localStorage!!!
+  // localStorage.setItem('myCat', 'Tom');
+  // const cat = localStorage.getItem('myCat');
+
+
+  // handleClick = () => {
+  //   const { username, password } = form
+  //   register({ username, password }, { baseUrl })
+  //     .then((token) => {
+  //       if (isAuthenticated()) {
+  //         props.history.push('/')
+  //       }
+  //     })
+  // }
 
   render () {
     return (
@@ -37,17 +48,22 @@ class Register extends React.Component {
           <input type='text'
             id='username'
             name='username'
-            value={form.username}
-            onChange={handleChange} />
-  
+            value={this.state.username}
+            onChange={this.handleChange} />
+          <label htmlFor='email'>Email:</label>
+          <input type='email'
+            id='email'
+            name='email'
+            value={this.state.email}
+            onChange={this.handleChange} />
           <label htmlFor='password'>Password:</label>
           <input type='password'
             id='password'
             name='password'
-            value={form.password}
-            onChange={handleChange} />
+            value={this.state.password}
+            onChange={this.handleChange} />
   
-          <input type='submit'>Register</input>
+          <input type='submit' value='Register'/>
         </form>
       </>
     )

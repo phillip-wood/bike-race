@@ -17,7 +17,7 @@ const opts = {
 
 passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
   db.getRegisteredUser({ id: jwt_payload.sub }, function (err, user) {
-    console.log(jwt_payload)
+    console.log('Payload: ', jwt_payload)
     if (err) {
       console.log(opts)
       return done(err, false)
@@ -34,6 +34,7 @@ passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
 }))
 
 router.post('/register', (req, res) => {
+  console.log('Route :')
   bcrypt.hash(req.body.password, saltRounds)
     .then((hash) => {
       const user = {
@@ -43,10 +44,12 @@ router.post('/register', (req, res) => {
       }
       return user
     }).then(user => {
-      const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
-      res.json(token)
+      registerUser(user)
+      .then(() => {
+        const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
+        res.json(token)
+      })
     })
-    .then(() => res.status(201).json({ ok: true }))
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Something went wrong' })
