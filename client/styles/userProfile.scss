@@ -1,6 +1,13 @@
 .profilePageHeader{
   text-align: center;
   color: #BFC0C0;
+ 
+}
+
+.userByIdEmail{
+  text-align: center;
+  color: #BFC0C0;
+  font-size: 20px;
 }
 
 .profilePicture {
@@ -77,6 +84,17 @@ list-style-type: none;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+}
+
+.actual-button{
+  height: 40px;
+  width: 100%;
+  background: none;
+  border: 0;
+  line-height: 40px;
+  color: snow;
+  text-align: center;
 }
 
 a {

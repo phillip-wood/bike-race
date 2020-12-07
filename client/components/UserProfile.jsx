@@ -54,8 +54,8 @@ export class UserProfile extends React.Component {
           </div>
           <div className="button" id="button-5">
             <div id="translate"></div>
-            <Link to="/users/active/edit">
-              <button>Edit Profile</button>
+            <Link className="actual-button" to="/users/active/edit">
+              Edit Profile
             </Link>
           </div>
         </div>

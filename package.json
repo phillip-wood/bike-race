@@ -49,6 +49,7 @@
     "mapbox-gl": "^1.13.0",
     "pg": "^8.5.1",
     "react-contenteditable": "^3.3.5",
+    "react-player": "^2.7.0",
     "superagent": "^6.1.0"
   },
   "devDependencies": {

@@ -76,7 +76,7 @@ export class EditUser extends React.Component {
         </form>
           <div className="button" id="button-5">
             <div id="translate"></div>
-              <button type="submit" onClick={this.handleSubmit}>Confirm</button>
+              <button className="actual-button" type="submit" onClick={this.handleSubmit}>Confirm</button>
             </div>
           </div>
       </div>

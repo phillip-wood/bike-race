@@ -7,9 +7,9 @@ function UserById(props){
 
   return (
     <div>
-      <h1>{thisUser.username}</h1>
-      <img src={thisUser.imgURL} alt="No profile picture available"/>
-      <h5>{thisUser.email}</h5>
+      <h1 className='profilePageHeader'>{thisUser.username}</h1>
+      <img src={thisUser.imgURL} alt="No profile picture available" className='profilePicture'/>
+      <h5 className='userByIdEmail'>{thisUser.email}</h5>
     </div>
 
   )
