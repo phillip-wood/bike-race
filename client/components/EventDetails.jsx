@@ -8,11 +8,12 @@ class EventDetails extends React.Component{
   render(){
 
     let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
-
+  
     const currentTime = String(new Date(Date.now()/1000 ))
     let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
     let raceDate = raceFullDate.slice(0,15)
     let raceTime = raceFullDate.slice(17,21)
+    let epochTime = Date.now()/1000
 
     const addUserToEvent= ()=>{
       if(eventDeatils.attendees.length == eventDeatils.maxGroupSize){
@@ -37,7 +38,7 @@ class EventDetails extends React.Component{
 
     const joinOrLeaveEvent = () =>{
       let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
-      if(currentTime < raceFullDate == false){
+      if(epochTime < eventDeatils.startTime){
         if(atendents.length == 0){
           return(
             <>
@@ -45,17 +46,17 @@ class EventDetails extends React.Component{
               <div id="translate"></div>
              <button onClick={()=> addUserToEvent()} className="actual-button">Join Event</button>
              </div>
-            </>
+            </> 
             )
         }else{
           return(
-            <>
+          
+            <> 
             <div className="listEventBtn button" id="button-5">
               <div id="translate"></div>
             <button onClick={()=> removeUserFromEvent()} className="actual-button">Leave Event</button>
             </div>
-            </>
-            )
+            </> )
         }
       }
       
