@@ -12,7 +12,7 @@ class Navbar extends React.Component {
 
   handleClick = () => {
     this.setState({ click: !this.state.click })
-  } 
+  }
 
   closeMobileMenu = () => {
     this.setState({ click: false })
@@ -26,14 +26,11 @@ class Navbar extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.showButton()
   }
 
-  // Not sure whether this is needed - kept in case after refactor from hooks 
-  // window.addEventListener('resize', this.showButton)
-
-  render(){
+  render() {
 
     return (
       <>
@@ -45,13 +42,41 @@ class Navbar extends React.Component {
             <div className='menu-icon' onClick={this.handleClick}>
               <i className={this.state.click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
+
             <ul className={this.state.click ? 'nav-menu active' : 'nav-menu'}>
-  
+
+              {this.props.activeUser &&
+                <li className='nav-item'>
+                  <Link to='/events/new' className='nav-links' onClick={this.closeMobileMenu}>
+                    Create Event
+                </Link>
+                </li>
+              }
+
+              {this.props.activeUser &&
+                <li className='nav-item'>
+                  <Link to='/events' className='nav-links' onClick={this.closeMobileMenu}>
+                    View Events
+                </Link>
+                </li>
+              }
+
               <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={this.closeMobileMenu}>
-                  Home
-              </Link>
+                <Link to='/users/active' className='nav-links' onClick={this.closeMobileMenu}>
+                  {this.props.activeUser && this.props.activeUser.username}
+                </Link>
               </li>
+
+              {this.props.activeUser &&
+                <li className='nav-item'>
+                  <Link to='' className='nav-links' onClick={() => {
+                    this.closeMobileMenu()
+                    this.props.dispatch(removeActiveUser())
+                  }}>
+                    Logout
+                  </Link>
+                </li>
+              }
 
               {!this.props.activeUser &&
                 <li className='nav-item'>
@@ -66,39 +91,6 @@ class Navbar extends React.Component {
                   <Link to='/login' className='nav-links' onClick={this.closeMobileMenu}>
                     Login
                 </Link>
-                </li>
-              }
-  
-              {this.props.activeUser &&
-                <li className='nav-item'>
-                  <Link to='/events/new' className='nav-links' onClick={this.closeMobileMenu}>
-                    Create Event
-                </Link>
-                </li>
-              }
-  
-              {this.props.activeUser &&
-                <li className='nav-item'>
-                  <Link to='/events' className='nav-links' onClick={this.closeMobileMenu}>
-                    Events Page
-                </Link>
-                </li>
-              }
-  
-              <li className='nav-item'>
-                <Link to='/users/active' className='nav-links' onClick={this.closeMobileMenu}>
-                  {this.props.activeUser && this.props.activeUser.username} 
-                </Link>
-              </li>
-
-              {this.props.activeUser &&
-                <li className='nav-item'>
-                  <Link to='' className='nav-links' onClick={() => {
-                    this.closeMobileMenu()
-                    this.props.dispatch(removeActiveUser())
-                  }}>
-                    Logout
-                  </Link>
                 </li>
               }
 
