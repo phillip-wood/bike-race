@@ -18,6 +18,9 @@ function getUsers (db = connection) {
 
 function addEvent (newEvent, db = connection) {
   return db('events').insert(newEvent, 'id')
+    .then((ids) => {
+      return db('users_events').insert( { user_id: newEvent.creator_id, event_id: ids[0] } )
+    })
 }
 
 function addUser (user, db = connection) {

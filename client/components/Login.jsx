@@ -31,8 +31,9 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <h5>Login to enter a race!</h5>
-        <form action="" onSubmit={this.handleSubmit}>
+      <div className='formDiv'>
+        <form action="" onSubmit={this.handleSubmit} className='loginForm'>
+        <h5 className='loginHeader'>Login to enter a race!</h5>
           <input type="text"
             name='username'
             placeholder='Username'
@@ -44,8 +45,9 @@ class Login extends React.Component {
           <input type="password"
             name='password'
             placeholder='password' />
-          <input type="submit"/>
+          <input type="submit" className='formSubmit'/>
         </form>
+        </div>
       </>
     )
   }
