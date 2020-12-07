@@ -15,13 +15,12 @@
     justify-content: center;
     align-items: center;
     height: 80px;
-    max-width: 1500px;
+    width: 80vw;
   }
   
   .navbar-logo {
     color: #fff;
     justify-self: start;
-    margin-left: 20px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
