@@ -22,11 +22,11 @@ class CurrentEvents extends React.Component {
                 <li key={event.id} 
                       >
                     <Link to={`events/${event.id}`}>
-                        <h2 className='eventListTitle'>{event.eventName}</h2>
+                        <h2 className='eventListTitle'>{event.eventName}</h2></Link>
                         <h4>{`Time: ${raceTime}`}</h4> 
                         <h4>{`Date: ${raceDate}`}</h4>
                         <p>{event.description}</p>
-                    </Link>
+                    
                 </li>
             )
             }})}
