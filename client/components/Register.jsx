@@ -28,28 +28,30 @@ class Register extends React.Component {
       })
   }
 
-  return (
-    <>
-      <h2>Register</h2>
-      <form action='submit' onSubmit={this.handleSubmit}>
-        <label htmlFor='username'>Username:</label>
-        <input type='text'
-          id='username'
-          name='username'
-          value={form.username}
-          onChange={handleChange} />
-
-        <label htmlFor='password'>Password:</label>
-        <input type='password'
-          id='password'
-          name='password'
-          value={form.password}
-          onChange={handleChange} />
-
-        <input type='submit'>Register</input>
-      </form>
-    </>
-  )
+  render () {
+    return (
+      <>
+        <h2>Register</h2>
+        <form action='submit' onSubmit={this.handleSubmit}>
+          <label htmlFor='username'>Username:</label>
+          <input type='text'
+            id='username'
+            name='username'
+            value={form.username}
+            onChange={handleChange} />
+  
+          <label htmlFor='password'>Password:</label>
+          <input type='password'
+            id='password'
+            name='password'
+            value={form.password}
+            onChange={handleChange} />
+  
+          <input type='submit'>Register</input>
+        </form>
+      </>
+    )
+  }
 }
 
 export default Register

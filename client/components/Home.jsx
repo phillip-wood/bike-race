@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Login from './Login'
+import Register from './Register'
 
 
 export class Home extends React.Component {
@@ -24,6 +25,7 @@ export class Home extends React.Component {
           </Link>
         </div>
         {!this.props.activeUser && <Login/>}
+        {!this.props.activeUser && <Register />}
       </div>
     )
   }

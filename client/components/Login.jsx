@@ -27,7 +27,6 @@ class Login extends React.Component {
       alert('user doesnt exist, please enter a valid username')
     }
   }
-  
 
   render() {
     return (

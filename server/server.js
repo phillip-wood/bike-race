@@ -1,6 +1,6 @@
-
 const express = require('express')
 const path = require('path')
+const passport = require('passport')
 
 const server = express()
 
@@ -10,13 +10,15 @@ const userRoutes = require('./routes/users')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
+server.use(passport.initialize())
+server.use(passport.session())
 
 server.use('/api/auth', authRoutes)
 server.use('/api/events', eventRoutes)
 server.use('/api/users', userRoutes)
 
-server.use('*',(req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+server.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 module.exports = server
