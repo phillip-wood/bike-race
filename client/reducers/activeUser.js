@@ -1,4 +1,4 @@
-import { ACTIVE_USER_CHANGED, USER_UPDATED } from "../actions/users"
+import { ACTIVE_USER_CHANGED, USER_UPDATED, ACTIVE_USER_REMOVED } from "../actions/users"
 
 // const initial = {
 //   id: 3,
@@ -19,6 +19,9 @@ const reducer = (state = null, action) => {
       let newState = action.user
       newState.id = action.id
       return newState
+
+    case ACTIVE_USER_REMOVED:
+      return null
       
     default:
       return state
