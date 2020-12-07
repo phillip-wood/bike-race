@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../actions/events'
 import { fetchUsers } from '../actions/users'
-import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
@@ -19,36 +19,39 @@ import EditUser from './EditUser'
 
 
 export class App extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.dispatch(fetchEvents())
     this.props.dispatch(fetchUsers())
   }
 
-  render () {
+  render() {
     return (
       <>
-      <Router>
-        <Navbar />
-          <Route exact path='/' component= {Home} />
-          {this.props.users.length &&  
+        <Router>
+          <Navbar />
+          {/* put logic around this home route for if not logged in  */}
+          <Route exact path='/' component={Home} />
           <Switch>
-            <Route path='/createEvent' exact component={CreateEvent} />
-            <Route exact path='/events' component= {Events} />
-            <Route exact path='/events/:id' component={EventDetails} />
-            <Route exact path='/events/:id/comments' component= {Comments}/>
-            <Route exact path='/users/new' component= {CreateUser} />
+            <Route exact path='/users/new' component={CreateUser} />
             <Route exact path='/users/active' component={UserProfile} />
-            <Route exact path='/users/active/edit' component= {EditUser}/>
-            <Route exact path='/users/:id' component= {UserById}/>
+            <Route exact path='/users/:id' component={UserById} />
+            <Route exact path='/users/active/edit' component={EditUser} />
           </Switch>
+          <Route exact path='/createEvent' component={CreateEvent} />
+          <Route exact path='/events' component={Events} />
+          {this.props.users.length ?
+          <>
+            <Route exact path='/events/:id' component={EventDetails} /> {/* } */}
+            <Route exact path='/events/:id/comments' component={Comments} /> {/* } */}
+          </> : null
           }
-      </Router>
+        </Router>
       </>
     )
   }
 }
 
-function ms2p(globalState){
+function ms2p(globalState) {
   return {
     users: globalState.users
   }

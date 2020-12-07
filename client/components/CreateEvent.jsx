@@ -13,7 +13,7 @@ class CreateEvent extends React.Component {
       description: null,
       startPoint: [],
       endPoint: [],
-      startTime: null,
+      startTime: 1607464920,
       maxGroupSize: 8,
       distance: null
     },
