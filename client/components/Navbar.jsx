@@ -55,7 +55,7 @@ function Navbar(props) {
 
             {props.activeUser &&
               <li className='nav-item'>
-                <Link to='/createEvent' className='nav-links' onClick={closeMobileMenu}>
+                <Link to='/events/new' className='nav-links' onClick={closeMobileMenu}>
                   Create Event
               </Link>
               </li>
