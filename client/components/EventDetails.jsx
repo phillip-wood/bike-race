@@ -25,7 +25,8 @@ class EventDetails extends React.Component{
           this.props.dispatch(postUserToEvent(addEvent))
       }
     }
-    const removeUserFromEvent= ()=>{
+    const removeUserFromEvent= (event)=>{
+      console.log(event)
       const addEvent={
           user_id: this.props.activeUser.id,
           event_id: parseInt(this.props.match.params.id)
