@@ -4,20 +4,36 @@ import { connect } from 'react-redux'
 function UserById(props){
 
   let thisUser = props.users.find(user => user.id == props.match.params.id)
-
+  let attendingEvents = props.events.filter(event =>{
+      console.log(event.attendees.includes(props.match.params.id))
+      //  return event ==  props.match.params.id  
+  })
+  console.log(attendingEvents)
+  // console.log(props.events[1].attendees, "events")
+  // console.log(props.match.params.id, 'User clicked')
   return (
+    <>
     <div>
-      <h1 className='profilePageHeader'>{thisUser.username}</h1>
-      <img src={thisUser.imgURL} alt="No profile picture available" className='profilePicture'/>
-      <h5 className='userByIdEmail'>{thisUser.email}</h5>
+      <h1 className='profilePageHeader'>Profile</h1>
+      <div className='profileImageContainer'>
+        <img src={thisUser.imgURL} className='profilePicture' />
+      </div>
     </div>
-
+    <div className='infoBorder'>
+      <div className='userInfoPP'>
+        <h3>Username: {thisUser.username}</h3>
+        <h3>Email: {thisUser.email}</h3>
+        <h3>Bike type: {thisUser.bikeType}</h3>
+      </div>
+    </div>
+    </>
   )
 }
 
 function ms2p(globalState){
   return {
-    users: globalState.users
+    users: globalState.users,
+    events: globalState.events
   }
 }
 

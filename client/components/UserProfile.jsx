@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export class UserProfile extends React.Component {
 
   attendingEvents = this.props.events.filter(event => event.attendees.includes(this.props.activeUser.id))
-
   render() {
     const currentTime = Date.now() / 1000
     return (
