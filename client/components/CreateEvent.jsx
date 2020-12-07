@@ -92,7 +92,10 @@ class CreateEvent extends React.Component {
               min={this.getTodaysDate()}
               defaultValue={this.getTodaysDate()}
               onChange={this.handleTimeChange} />
-            <input type="submit" name='submit' />
+              <div className="button" id="button-5">
+            <div id="translate"></div>
+            <input type="submit" name='submit' className='actual-button'/>
+            </div>
           </form>
         </div>
       </>

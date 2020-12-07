@@ -56,10 +56,11 @@ color: #BFC0C0;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
   }
   
   button {
-    // color: #BFC0C0;
+    color: #BFC0C0;
     text-decoration: none;
     letter-spacing: 1px;
   }
