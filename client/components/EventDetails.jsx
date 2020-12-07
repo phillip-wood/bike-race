@@ -41,13 +41,19 @@ class EventDetails extends React.Component{
         if(atendents.length == 0){
           return(
             <>
-             <button onClick={()=> addUserToEvent()}>Join Event</button>
+            <div className="listEventBtn button" id="button-5">
+              <div id="translate"></div>
+             <button onClick={()=> addUserToEvent()} className="actual-button">Join Event</button>
+             </div>
             </>
             )
         }else{
           return(
             <>
-            <button onClick={()=> removeUserFromEvent()}>Leave Event</button>
+            <div className="listEventBtn button" id="button-5">
+              <div id="translate"></div>
+            <button onClick={()=> removeUserFromEvent()} className="actual-button">Leave Event</button>
+            </div>
             </>
             )
         }
@@ -60,16 +66,15 @@ class EventDetails extends React.Component{
       
       { eventDeatils && 
       <div>
-      <h1 className="event_name">{eventDeatils.eventName}<br/></h1>
-      <div>
+      <h1 className="profilePageHeader">{eventDeatils.eventName}<br/></h1>
+      <div className='testmap'>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
-      </div>
-      <div className='content_container'>
+      <div className='content_container-event-details'>
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
        
-        {joinOrLeaveEvent()} <br/>
+        {joinOrLeaveEvent()} 
         Attending:
         <ul >
         {eventDeatils.attendees.map(attendent => {
@@ -94,6 +99,7 @@ class EventDetails extends React.Component{
             Comments: {eventDeatils.comments.length}
             </Link><br/>
         </div>
+      </div>
       </div>
       </div>
       }

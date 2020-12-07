@@ -1,6 +1,8 @@
 .profilePageHeader{
   text-align: center;
   color: #BFC0C0;
+  margin-top: 8px;
+  margin-bottom: 8px;
  
 }
 
@@ -32,6 +34,8 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: rgba($color: #ac7777, $alpha: 0.5);
 }
 
 .userInfoPP{
@@ -63,7 +67,7 @@ list-style-type: none;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 10px;
   // width: 50%;
 }
 
@@ -75,7 +79,7 @@ list-style-type: none;
   height: 40px;
   width: 150px;
   border: 2px solid snow;
-  margin: 40px auto 20px auto;
+  margin: 10px auto 10px auto;
   color: #BFC0C0;
   text-transform: uppercase;
   text-decoration: none;

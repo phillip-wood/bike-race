@@ -15,7 +15,7 @@ const config = {
 
 export class CreateUser extends React.Component {
   state = {
-    imgURL: '',
+    imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
     username: '',
     email: '',
     bikeType: '',
@@ -36,7 +36,7 @@ export class CreateUser extends React.Component {
     this.props.dispatch(addNewUser(newUser))
     this.props.dispatch(changeActiveUser(newUser))
     this.setState({
-      imgURL: '',
+      imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
       username: '',
       email: '',
       bikeType: '',
