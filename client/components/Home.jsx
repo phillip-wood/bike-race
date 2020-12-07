@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Login from './Login'
+import ReactPlayer from 'react-player'
 
 
 export class Home extends React.Component {
@@ -21,7 +22,7 @@ export class Home extends React.Component {
             width="100vw"
             height="100vw"
           />
-          <div class="video-overlay">
+          <div className="video-overlay">
             <div className="homeInfo">
               <p name="text" id="home-info">
                 Find and create rides and races to enjoy together

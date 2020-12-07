@@ -33,8 +33,8 @@ class Login extends React.Component {
     return (
       <>
       <div className='formDiv'>
-        <h5 className='loginHeader'>Login to enter a race!</h5>
         <form action="" onSubmit={this.handleSubmit} className='loginForm'>
+        <h5 className='loginHeader'>Login to enter a race!</h5>
           <input type="text"
             name='username'
             placeholder='Username'
