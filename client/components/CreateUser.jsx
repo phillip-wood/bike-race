@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 import S3FileUpload from 'react-s3';
 
+import { registerNewUserAPI } from '../apis/auth'
+
 const config = {
   bucketName: 'bike-race',
   dirName: 'photos', /* optional */
@@ -18,6 +20,7 @@ export class CreateUser extends React.Component {
     imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
     username: '',
     email: '',
+    password: '',
     bikeType: '',
     redirect: false
   }
@@ -33,12 +36,16 @@ export class CreateUser extends React.Component {
     evt.preventDefault()
     let newUser = { ...this.state }
     delete newUser.redirect
-    this.props.dispatch(addNewUser(newUser))
+    registerNewUserAPI(newUser)
+    delete newUser.password
+    // need an action dispatched after the api call to set all users to globalstate
+    // this.props.dispatch(addNewUser(newUser))
     this.props.dispatch(changeActiveUser(newUser))
     this.setState({
       imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
       username: '',
       email: '',
+      password: '',
       bikeType: '',
       redirect: true
     })
@@ -85,6 +92,11 @@ export class CreateUser extends React.Component {
           <input type="text" id="email" name="email"
             onChange={this.handleChange}
             value={this.state.email} />
+
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" name="password"
+            onChange={this.handleChange}
+            value={this.state.password} />
           <br/>
 
           <label htmlFor="bikeType">Bike type:</label>

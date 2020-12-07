@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { changeActiveUser } from '../actions/users'
 import { Redirect } from 'react-router-dom'
 
+import { loginExistingUserAPI } from '../apis/auth'
 
 class Login extends React.Component {
   state = {
     username: '',
     email: '',
+    password: '',
     redirect: false
   }
 
@@ -22,6 +24,9 @@ class Login extends React.Component {
     let thisUser = this.props.users.find(user => user.username == this.state.username)
     if(thisUser){
       if(thisUser.email == this.state.email){
+        let registeredUser = { ...this.state }
+        delete registeredUser.redirect
+        loginExistingUserAPI(registeredUser)
         this.props.dispatch(changeActiveUser(thisUser))
         this.setState({ redirect: true })
       } else {
@@ -53,7 +58,8 @@ class Login extends React.Component {
             onChange={this.handleChange} />
           <input type="password"
             name='password'
-            placeholder='password' />
+            placeholder='password'
+            onChange={this.handleChange} />
           <input type="submit" className='formSubmit'/>
         </form>
         </div>

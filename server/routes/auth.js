@@ -28,23 +28,23 @@ passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
     } else {
       console.log(opts)
       return done(null, false)
-      // or you could create a new account
     }
   })
 }))
 
 router.post('/register', (req, res) => {
-  console.log('Route :')
   bcrypt.hash(req.body.password, saltRounds)
     .then((hash) => {
       const user = {
         username: req.body.username,
         email: req.body.email,
-        hash: hash
+        hash: hash,
+        imgURL: req.body.imgURL,
+        bikeType: req.body.bikeType
       }
       return user
     }).then(user => {
-      registerUser(user)
+      db.registerUser(user)
       .then(() => {
         const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
         res.json(token)
@@ -57,26 +57,24 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login',
-  // passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    db.getRegisteredUser(req.body.username)
-      .then(user => {
-        bcrypt.compare(req.body.password, user.hash, (err, result) => {
-          if (result) {
-            // Set user as logged in?
-            const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
-            res.json(token)
-          } else {
-            // Send to register screen?
-            console.log('No result :(')
-          }
-        })
-      })
-      .catch(err => {
+(req, res, next) => {
+  db.getRegisteredUser(req.body.username)
+  .then(user => {
+    bcrypt.compare(req.body.password, user.hash, (err, result) => {
+      if (result) {
+        const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
+        res.json(token)
+      } else {
         console.log(err)
-        res.status(500).json({ message: 'Something went wrong' })
-      })
-
+      }
+    })
   })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({ message: 'Something went wrong' })
+  })
+})
+
+// passport.authenticate('jwt', { session: false }),
 
 module.exports = router
