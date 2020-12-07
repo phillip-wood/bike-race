@@ -1,6 +1,25 @@
 .each_user{
  list-style-type: none;
 }
+
 .event_name{
+    text-align: center;
+}
+
+.content_container-event-details{
+text-align: center;
+color: #fff;
+margin: 0;
+padding: 5px;
+border: 3px solid snow;
+width: 100%;
+background-color: rgba($color: #2D3142, $alpha: 1);
+z-index: 1;
+position: fixed;
+bottom:0;
+justify-content: center;
+
+}
+.testmap{
     text-align: center;
 }

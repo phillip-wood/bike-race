@@ -15,7 +15,7 @@ const config = {
 
 export class CreateUser extends React.Component {
   state = {
-    imgURL: '',
+    imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
     username: '',
     email: '',
     bikeType: '',
@@ -36,7 +36,7 @@ export class CreateUser extends React.Component {
     this.props.dispatch(addNewUser(newUser))
     this.props.dispatch(changeActiveUser(newUser))
     this.setState({
-      imgURL: '',
+      imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
       username: '',
       email: '',
       bikeType: '',
@@ -65,8 +65,9 @@ export class CreateUser extends React.Component {
     
     return (
       <div>
-        <h1>Create Profile</h1>
-        <form className='formBox' onSubmit={this.handleSubmit}>
+        <h1 className='profilePageHeader'>Create Profile</h1>
+        <div className='infoBorderCP'>
+        <form className='userInfoCP' onSubmit={this.handleSubmit}>
 
           <label htmlFor="imgURL">profile picture</label>
           <input className='formInput'
@@ -84,7 +85,7 @@ export class CreateUser extends React.Component {
           <input type="text" id="email" name="email"
             onChange={this.handleChange}
             value={this.state.email} />
-
+          <br/>
 
           <label htmlFor="bikeType">Bike type:</label>
           <select id="bikeType" name="bikeType"
@@ -97,8 +98,12 @@ export class CreateUser extends React.Component {
             <option value="unicycle">Unicycle</option>
           </select>
 
-          <button type="submit">Confirm</button>
+          <div className="button" id="button-5">
+            <div id="translate"></div>
+          <button type="submit" className='actual-button'>Confirm</button>
+          </div>
         </form>
+        </div>
       </div>
     )
   }
