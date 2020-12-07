@@ -15,6 +15,7 @@ import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
 import UserById from './UserById'
 import EditUser from './EditUser'
+import Login from './Login'
 
 
 
@@ -29,22 +30,22 @@ export class App extends React.Component {
       <>
         <Router>
           <Navbar />
-          {/* put logic around this home route for if not logged in  */}
           <Route exact path='/' component={Home} />
           <Switch>
             <Route exact path='/users/new' component={CreateUser} />
             <Route exact path='/users/active' component={UserProfile} />
             <Route exact path='/users/:id' component={UserById} />
             <Route exact path='/users/active/edit' component={EditUser} />
+            <Route exact path='/events/new' component={CreateEvent} />
+            <Route exact path='/events/:id' component={EventDetails} /> 
+            <Route exact path='/events/:id/comments' component={Comments} /> 
           </Switch>
-          <Route exact path='/createEvent' component={CreateEvent} />
           <Route exact path='/events' component={Events} />
-          {this.props.users.length ?
+          <Route exact path='/login' component={Login} />
+          {/* {this.props.users.length ?
           <>
-            <Route exact path='/events/:id' component={EventDetails} /> {/* } */}
-            <Route exact path='/events/:id/comments' component={Comments} /> {/* } */}
           </> : null
-          }
+          } */}
         </Router>
       </>
     )

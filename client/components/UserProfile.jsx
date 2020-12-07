@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 export class UserProfile extends React.Component {
 
+  attendingEvents = this.props.events.filter(event => event.attendees.includes(this.props.activeUser.id))
+
   render() {
     const currentTime = Date.now() / 1000
     return (
@@ -25,14 +27,16 @@ export class UserProfile extends React.Component {
 
           <div className='upcomingEventsContainer'>
             <h3>Upcoming events</h3>
-            {this.props.events.map((event) => {
+            {this.attendingEvents.map(event => {
               if (event.startTime > currentTime) {
                 return (
+                  <>
                   <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
                       <li className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
+                  </>
                 )
               }
             })}
@@ -40,18 +44,21 @@ export class UserProfile extends React.Component {
 
           <div className='upcomingEventsContainer'>
             <h3>Past events</h3>
-            {this.props.events.map((event) => {
+          {this.attendingEvents.map(event => {
               if (event.startTime < currentTime) {
                 return (
-                  <ul key={event.id}>
+                  <>
+                  <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
                       <li className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
+                  </>
                 )
               }
             })}
           </div>
+
           <div className="button" id="button-5">
             <div id="translate"></div>
             <Link className="actual-button" to="/users/active/edit">
@@ -59,7 +66,7 @@ export class UserProfile extends React.Component {
             </Link>
           </div>
         </div>
-    
+
       </div> : null
     )
   }
