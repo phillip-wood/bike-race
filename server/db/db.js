@@ -44,7 +44,6 @@ function addUserToEvent(activeUser, db = connection){
 }
 
 function removeUserFromEvent(activeUser, db = connection){
-  console.log(activeUser)
   return db('users_events')
   .where('event_id', activeUser.event_id)
   .where('user_id', activeUser.user_id)

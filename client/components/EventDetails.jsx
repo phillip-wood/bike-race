@@ -25,8 +25,7 @@ class EventDetails extends React.Component{
           this.props.dispatch(postUserToEvent(addEvent))
       }
     }
-    const removeUserFromEvent= (event)=>{
-      console.log(event)
+    const removeUserFromEvent= ()=>{
       const addEvent={
           user_id: this.props.activeUser.id,
           event_id: parseInt(this.props.match.params.id)
@@ -36,7 +35,7 @@ class EventDetails extends React.Component{
 
 
 
-    const joinOrLeaveEvent = (user, atten) =>{
+    const joinOrLeaveEvent = () =>{
       let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
       if(currentTime < raceFullDate == false){
         if(atendents.length == 0){

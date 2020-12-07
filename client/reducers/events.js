@@ -22,10 +22,8 @@ const reducer = (state = [], action) => {
     case USER_REMOVE_FROM_EVENT:
     newState = [...state]
     event = newState.find(event => event.id == action.attendees.event_id)
-    let newAtt = event.attendees.filter(att => att.user_id == action.attendees.user_id)
-    console.log(even)
+    let newAtt = event.attendees.filter(att => att != action.attendees.user_id)
     event.attendees = newAtt
-    // event.attendees.pop(action.attendees.user_id)
     return newState
     default:
       return state
