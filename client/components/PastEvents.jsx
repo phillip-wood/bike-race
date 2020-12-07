@@ -21,9 +21,8 @@ class PastEvents extends React.Component {
             let raceTime = raceFullDate.slice(16,21)
            if(currentTime > event.startTime){
             return (
-              <div className='event-cards'>
-                <li key={event.id} 
-                    className='event--li'>
+              <div key={event.id} className='event-cards'>
+                <li className='event--li'>
                     <Link to={`events/${event.id}`}>
                         <h2>{event.eventName}</h2></Link>
                         <h4>{`Date ${raceDate}`}</h4>
