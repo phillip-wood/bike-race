@@ -43,7 +43,7 @@ export class UserProfile extends React.Component {
 
           <div className='upcomingEventsContainer'>
             <h3>Past events</h3>
-          {this.attendingEvents.map(event => {
+            {this.attendingEvents.map(event => {
               if (event.startTime < currentTime) {
                 return (
                   <>

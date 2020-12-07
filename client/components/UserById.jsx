@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 
 function UserById(props){
 
   let thisUser = props.users.find(user => user.id == props.match.params.id)
-  let attendingEvents = props.events.filter(event =>{
-      console.log(event.attendees.includes(props.match.params.id))
-      //  return event ==  props.match.params.id  
-  })
+  let attendingEvents = props.events.filter(event => event.attendees.includes(parseInt(props.match.params.id)))
+  const currentTime = Date.now() / 1000
+
   console.log(attendingEvents)
   // console.log(props.events[1].attendees, "events")
   // console.log(props.match.params.id, 'User clicked')
@@ -26,6 +27,40 @@ function UserById(props){
         <h3>Bike type: {thisUser.bikeType}</h3>
       </div>
     </div>
+    
+    <div className='upcomingEventsContainer'>
+            <h3>Upcoming events</h3>
+            {attendingEvents.map(event => {
+              if (event.startTime > currentTime) {
+                return (
+                  <>
+                  <ul key={event.id} >
+                    <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
+                      <li className='upcomingEventsList'>{event.eventName}</li>
+                    </Link>
+                  </ul>
+                  </>
+                )
+              }
+            })}
+          </div>
+
+          <div className='upcomingEventsContainer'>
+            <h3>Past events</h3>
+            {attendingEvents.map(event => {
+              if (event.startTime < currentTime) {
+                return (
+                  <>
+                  <ul key={event.id} >
+                    <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
+                      <li className='upcomingEventsList'>{event.eventName}</li>
+                    </Link>
+                  </ul>
+                  </>
+                )
+              }
+            })}
+          </div>
     </>
   )
 }
