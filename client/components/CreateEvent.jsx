@@ -13,7 +13,7 @@ class CreateEvent extends React.Component {
       description: null,
       startPoint: [],
       endPoint: [],
-      startTime: null,
+      startTime: 1607464920,
       maxGroupSize: 8,
       distance: null
     },
@@ -79,8 +79,8 @@ class CreateEvent extends React.Component {
         <div className='form-container'>
           <form className='event-form' action="submit" onSubmit={this.handleSubmit}>
             <input type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
-            <textarea id="" cols="30" rows="5" name='description' placeholder='A brief description of your event' onChange={this.handleChange}></textarea>
-            <label htmlFor="time">Event starts:</label>
+            <textarea id="" cols="30" rows="5" name='description' placeholder='A brief description of your event' onChange={this.handleChange}></textarea><br/>
+            <label htmlFor="time" className='eventStartLabel'>Event time:</label><br/>
             <input type="time"
               name='time'
               placeholder='time'
@@ -92,7 +92,10 @@ class CreateEvent extends React.Component {
               min={this.getTodaysDate()}
               defaultValue={this.getTodaysDate()}
               onChange={this.handleTimeChange} />
-            <input type="submit" name='submit' />
+              <div className="button" id="button-5">
+            <div id="translate"></div>
+            <input type="submit" name='submit' className='actual-button'/>
+            </div>
           </form>
         </div>
       </>

@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { changeActiveUser } from '../actions/users'
+import { Redirect } from 'react-router-dom'
+
 
 class Login extends React.Component {
   state = {
     username: '',
-    email: ''
+    email: '',
+    redirect: false
   }
 
   handleChange = event => {
@@ -20,6 +23,7 @@ class Login extends React.Component {
     if(thisUser){
       if(thisUser.email == this.state.email){
         this.props.dispatch(changeActiveUser(thisUser))
+        this.setState({ redirect: true })
       } else {
         alert('Your username and email do not match. Please enter valid username and email')
       }
@@ -27,9 +31,13 @@ class Login extends React.Component {
       alert('user doesnt exist, please enter a valid username')
     }
   }
-  
 
   render() {
+    const { redirect } = this.state
+    if(redirect){
+      return <Redirect to='/' />
+    }
+
     return (
       <>
       <div className='formDiv'>
