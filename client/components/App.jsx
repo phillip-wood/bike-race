@@ -29,7 +29,6 @@ export class App extends React.Component {
       <>
         <Router>
           <Navbar />
-          {/* put logic around this home route for if not logged in  */}
           <Route exact path='/' component={Home} />
           <Switch>
             <Route exact path='/users/new' component={CreateUser} />
