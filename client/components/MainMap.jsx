@@ -84,7 +84,6 @@ class MainMap extends React.Component {
       const onDragEnd = (marker, stateKey) => {
         const lngLat = marker.getLngLat()
         const newPosition = [lngLat.lng.toFixed(4), lngLat.lat.toFixed(4)]
-        console.log(stateKey, newPosition)
 
         this.setState({
           [stateKey]: [

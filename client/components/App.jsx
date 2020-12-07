@@ -6,6 +6,7 @@ import{ BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Navbar from './Navbar'
+import Button from './Button'
 import CreateEvent from './CreateEvent'
 import Events from './Events'
 import Comments from './Comments'
@@ -14,6 +15,8 @@ import CreateUser from './CreateUser'
 import EventDetails from './EventDetails'
 import UserById from './UserById'
 import EditUser from './EditUser'
+
+
 
 export class App extends React.Component {
   componentDidMount () {

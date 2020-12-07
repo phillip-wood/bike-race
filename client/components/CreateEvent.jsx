@@ -53,13 +53,23 @@ class CreateEvent extends React.Component {
         startTime: epoch
       }
     })
-    this.props.dispatch(addEvent(newEventObj))
-    this.setState({redirect: true})
+    if (!newEventObj.startPoint || !newEventObj.endPoint) {
+      alert("Please Select start and end location")
+    } else {
+      this.props.dispatch(addEvent(newEventObj))
+      this.setState({ redirect: true })
+    }
   }
 
-  render () {
+  getTodaysDate = () => {
+    let tzoffset = (new Date()).getTimezoneOffset() * 60000 //offset in milliseconds
+    let localISODate = (new Date(Date.now() - tzoffset)).toISOString().split('T')[0]
+    return localISODate
+  }
+
+  render() {
     const redirect = this.state.redirect
-    if(redirect) {
+    if (redirect) {
       return <Redirect to='/events' />
     }
 
@@ -71,8 +81,17 @@ class CreateEvent extends React.Component {
             <input type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
             <textarea id="" cols="30" rows="5" name='description' placeholder='A brief description of your event' onChange={this.handleChange}></textarea>
             <label htmlFor="time">Event starts:</label>
-            <input type="time" name='time' placeholder='time' onChange={this.handleTimeChange} />
-            <input type="date" name='date' placeholder='date' onChange={this.handleTimeChange} />
+            <input type="time"
+              name='time'
+              placeholder='time'
+              defaultValue='10:00'
+              onChange={this.handleTimeChange} />
+            <input type="date"
+              name='date'
+              placeholder='date'
+              min={this.getTodaysDate()}
+              defaultValue={this.getTodaysDate()}
+              onChange={this.handleTimeChange} />
             <input type="submit" name='submit' />
           </form>
         </div>
@@ -81,7 +100,7 @@ class CreateEvent extends React.Component {
   }
 }
 
-function mapStateToProps (globalState) {
+function mapStateToProps(globalState) {
   return {
     activeUser: globalState.activeUser,
     createEvent: globalState.createEvent

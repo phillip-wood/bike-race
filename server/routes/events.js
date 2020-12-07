@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 router.post('/new', (req, res) => {
   const newEvent = req.body
   return db.addEvent(newEvent)
-    .then(id => res.json({ id }))
+    .then(ids => res.json(ids[0]))
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Something went wrong' })
@@ -45,9 +45,7 @@ router.post('/new', (req, res) => {
 //add new comment to event
 router.post('/addcomment', (req, res) => {
   return db.addComment(req.body)
-    .then(ids => {
-      res.json(ids[0])
-    })
+    .then(ids => res.json(ids[0]))
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Somthing went wrong' })
