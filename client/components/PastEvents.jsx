@@ -18,7 +18,7 @@ class PastEvents extends React.Component {
             // converts epoch race time to date/time string then slice out what we need to display
             let raceFullDate = String(new Date(event.startTime * 1000))
             let raceDate = raceFullDate.slice(0,15)
-            let raceTime = raceFullDate.slice(17,21)
+            let raceTime = raceFullDate.slice(16,21)
            if(currentTime > event.startTime){
             return (
               <div className='event-cards'>
