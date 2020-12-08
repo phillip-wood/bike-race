@@ -32,7 +32,7 @@ export class Home extends React.Component {
           <div className="video-overlay">
             <div className="homeInfo">
               <p name="text" id="home-info">
-                Find and create rides and races to enjoy together
+                Find, create and share riding events in your area!
               </p>
 
               <div className="createEventBtn button" id="button-5">
@@ -42,7 +42,7 @@ export class Home extends React.Component {
                     type="submit"
                     name="create_event"
                     className="actual-button">
-                    Create Race
+                    Create New Event
                 </button>
                 </Link>
               </div>
@@ -54,7 +54,7 @@ export class Home extends React.Component {
                     type="submit"
                     name="view_event"
                     className="actual-button">
-                    View Race
+                    View Events
                 </button>
                 </Link>
               </div>
