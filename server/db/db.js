@@ -54,16 +54,17 @@ function getComments (db = connection) {
 function addComment (comment, db = connection) {
   return db('comments').insert(comment, 'id')
 }
-// Auth functions
+
+// --------------- AUTH FUNCS -------------------
 function registerUser (newUser, db = connection) {
   return db('users').insert(newUser)
 }
 
 function getRegisteredUser (username, cb, db = connection) {
-  console.log('Username:', username)
   return db('users').select()
     .where('username', username)
     .first()
+}
 
 module.exports = {
   getEvents,

@@ -18,17 +18,13 @@ const opts = {
 passport.use(new JwtStrategy(opts, (payload, done) => {
   db.getRegisteredUser(payload.sub.username)
     .then(user => {
-      console.log('Payload: ', payload)
       if (user) {
-        console.log('User:', opts)
         return done(null, user)
       } else {
-        console.log('NoUser:', opts)
         return done(null, false)
       }
     })
     .catch(err => {
-      console.log('Error: ', err)
       return done(err, false)
     })
 }))
@@ -46,44 +42,36 @@ router.post('/register', (req, res) => {
       return user
     }).then(user => {
       db.registerUser(user)
-      .then(() => {
-        const token = 'Bearer ' + jwt.sign({sub: user}, process.env.JWT_SECRET, {expiresIn: '1d'})
-        res.json(token)
-      })
+        .then(() => {
+          const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
+          res.json(token)
+        })
     })
     .catch(err => {
-      console.log(err)
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
 
 router.post('/login',
-(req, res) => {
-  db.getRegisteredUser(req.body.username)
-  .then(user => {
-    bcrypt.compare(req.body.password, user.hash, (err, result) => {
-      if (result) {
-        const token = 'Bearer ' + jwt.sign({sub: user}, process.env.JWT_SECRET, {expiresIn: '1d'})
-        res.json(token)
-      } else {
-        console.log(err)
-      }
-    })
+  (req, res) => {
+    db.getRegisteredUser(req.body.username)
+      .then(user => {
+        bcrypt.compare(req.body.password, user.hash, (err, result) => {
+          if (result) {
+            const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
+            res.json(token)
+          } else {
+            console.log(err)
+          }
+        })
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Something went wrong' })
+      })
   })
-  .catch(err => {
-    console.log(err)
-    res.status(500).json({ message: 'Something went wrong' })
-  })
-})
 
 router.post('/authenticate', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json(true)
 })
-
-router.get('/restricted', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({succeed: 'true'})
-})
-
-// passport.authenticate('jwt', { session: false }),
 
 module.exports = router
