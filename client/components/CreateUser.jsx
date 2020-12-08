@@ -38,19 +38,9 @@ export class CreateUser extends React.Component {
     let newUser = { ...this.state }
     delete newUser.redirect
     this.props.dispatch(addNewUser(newUser))
-    registerNewUserAPI(newUser)
     delete newUser.password
-    // need an action dispatched after the api call to set all users to globalstate
-    // this.props.dispatch(addNewUser(newUser))
     this.props.dispatch(changeActiveUser(newUser))
-    this.setState({
-      imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
-      username: '',
-      email: '',
-      password: '',
-      bikeType: '',
-      redirect: true
-    })
+    this.setState({ redirect: true })
   }
 
   handleTakePhoto = (dataUri) => {
@@ -60,7 +50,6 @@ export class CreateUser extends React.Component {
   
   handleImageChange =(event)=>{
     let file = event.target.files[0]
-    
     S3FileUpload.uploadFile(file, config)
     .then(data =>  this.setState({imgURL: data.location}))
     .catch(err => console.error(err))

@@ -1,4 +1,5 @@
 import { fetchUsersAPI, addUserAPI, editUserAPI } from "../apis/users"
+import { registerNewUserAPI, loginExistingUserAPI } from "../apis/auth"
 
 export const SET_USERS = 'SET_USERS'
 export const USER_ADDED = 'USER_ADDED'
@@ -23,10 +24,10 @@ export const setUsers = users => {
 
 export const addNewUser = user => {
   return dispatch => {
-    addUserAPI(user)
-    .then(id => {
-      user.id = id
-      dispatch(addUser(user))
+    registerNewUserAPI(user)
+    .then(obj => {
+      window.localStorage.setItem('token', obj.token)
+      return dispatch(setUsers(obj.users))
     })
   }
 }
@@ -37,6 +38,18 @@ export const editUser = (id, user) => {
     .then(() => dispatch(updateUser(id, user)))
   }
 }
+
+export const verifyUser = (user) => {
+  return dispatch => {
+    loginExistingUserAPI(user)
+    .then(obj => {
+      console.log(obj)
+      window.localStorage.setItem('token', obj.token)
+      dispatch(changeActiveUser(obj.user))
+    })
+  }
+}
+
 
 export const updateUser = (id, user) => {
   return {

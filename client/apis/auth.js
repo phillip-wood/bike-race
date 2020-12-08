@@ -17,20 +17,16 @@ export const registerNewUserAPI = (newUser) => {
   return request
     .post('/api/auth/register')
     .send(newUser)
-    .then(res => {
-      window.localStorage.setItem('token', res.body.token)
-      return res.body.users
-    })
-    .then(users => {
-      dispatch()
-    })
+    .then(res => res.body)
 }
 
 export const loginExistingUserAPI = (existingUser) => {
   return request
     .post('/api/auth/login')
     .send(existingUser)
-    .then(res => {
-      window.localStorage.setItem('token', res.body)
-    })
+    .then(res => res.body)
+    // .then(res => {
+    //   window.localStorage.setItem('token', res.body)
+    //   return res.body
+    // })
 }

@@ -63,14 +63,22 @@ router.post('/register', (req, res) => {
     })
 })
 
-router.post('/login',
-  (req, res) => {
+router.post('/login', (req, res) => {
     db.getRegisteredUser(req.body.username)
       .then(user => {
         bcrypt.compare(req.body.password, user.hash, (err, result) => {
           if (result) {
             const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
-            res.json(token)
+            const userObj = {
+              ...user,
+              hash: user.hash
+            }
+            delete userObj.password
+            const resObj = {
+              token: token,
+              user: userObj
+            }
+            res.json(resObj)
           } else {
             console.log(err)
           }

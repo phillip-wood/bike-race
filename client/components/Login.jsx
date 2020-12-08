@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeActiveUser } from '../actions/users'
+import { verifyUser } from '../actions/users'
 import { Redirect } from 'react-router-dom'
-
-import { loginExistingUserAPI } from '../apis/auth'
 
 class Login extends React.Component {
   state = {
@@ -21,20 +19,10 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    let thisUser = this.props.users.find(user => user.username == this.state.username)
-    if(thisUser){
-      if(thisUser.email == this.state.email){
-        let registeredUser = { ...this.state }
-        delete registeredUser.redirect
-        loginExistingUserAPI(registeredUser)
-        this.props.dispatch(changeActiveUser(thisUser))
-        this.setState({ redirect: true })
-      } else {
-        alert('Your username and email do not match. Please enter valid username and email')
-      }
-    } else {
-      alert('user doesnt exist, please enter a valid username')
-    }
+    let registeredUser = { ...this.state }
+    delete registeredUser.redirect
+    this.props.dispatch(verifyUser(registeredUser))
+    this.setState({ redirect: true })
   }
 
   render() {
