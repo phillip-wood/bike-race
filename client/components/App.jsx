@@ -32,18 +32,18 @@ export class App extends React.Component {
         <Router>
           <Navbar />
             <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
               <Switch>
+                <Route exact path='/login' component={Login} />
                 <Route exact path='/users/new' component={CreateUser} />
-            <AuthRoute>
+              <AuthRoute>
                 <Switch>
-                <Route exact path='/users/active' component={UserProfile} />
-                <Route exact path='/users/:id' component={UserById} />
-                <Route exact path='/users/active/edit' component={EditUser} />
-                <Route exact path='/events/new' component={CreateEvent} />
-                <Route exact path='/events/:id' component={EventDetails} /> 
-                <Route exact path='/events/:id/comments' component={Comments}/> 
-                <Route exact path='/events' component={Events} />
+                  <Route exact path='/users/active' component={UserProfile} />
+                  <Route exact path='/users/:id' component={UserById} />
+                  <Route exact path='/users/active/edit' component={EditUser} />
+                  <Route exact path='/events/new' component={CreateEvent} />
+                  <Route exact path='/events/:id' component={EventDetails} /> 
+                  <Route exact path='/events/:id/comments' component={Comments}/> 
+                  <Route exact path='/events' component={Events} />
                 </Switch>
             </AuthRoute>
               </Switch>

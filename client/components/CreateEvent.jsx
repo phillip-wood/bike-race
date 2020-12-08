@@ -52,7 +52,7 @@ class CreateEvent extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const str = this.state.date + ' ' + this.state.time + ' GMT+1300'
+    const str = this.state.date + ' ' + this.state.time
     const epoch = Math.floor(new Date(str) / 1000)
     const newEventObj = {
       ...this.state.newEvent,
