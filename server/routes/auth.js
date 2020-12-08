@@ -84,7 +84,7 @@ router.post('/login', (req, res) => {
         })
       } else {
         console.log('no user found')
-        res.status(500).json({ message: 'No user found' })
+        return res.status(500).json({ message: 'No user found' })
       }
     })
     .then(resObj => {

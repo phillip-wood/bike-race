@@ -50,14 +50,14 @@ export const verifyUser = (user) => {
   }
 }
 
-export const checkForToken = (token) => {
-  return dispatch
-    checkTokenAuthenticationAPI(token)
-    //then we get true or false
-    .then(isAuthenticated => {
-      // dispatch(changeActiveUser(user))
-    })
-}
+// export const checkForToken = (token) => {
+//   return dispatch => {
+//     checkTokenAuthenticationAPI(token)
+//   }
+//     .then(isAuthenticated => {
+//       // dispatch(changeActiveUser(user))
+//     })
+// }
 
 
 export const updateUser = (id, user) => {

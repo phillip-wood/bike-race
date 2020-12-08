@@ -24,7 +24,7 @@ export class App extends React.Component {
     this.props.dispatch(fetchEvents())
     this.props.dispatch(fetchUsers())
     console.log(window.localStorage)
-    this.props.dispatch(checkForToken(window.localStorage.token))
+    // this.props.dispatch(checkForToken(window.localStorage.token))
   }
 
   render() {
