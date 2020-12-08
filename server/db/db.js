@@ -66,6 +66,12 @@ function getRegisteredUser (username, cb, db = connection) {
     .first()
 }
 
+function assignUserToken (id, token, db = connection) {
+  return db('users')
+    .insert({ token: token})
+    .where('id', id)
+}
+
 module.exports = {
   getEvents,
   getComments,
@@ -78,5 +84,6 @@ module.exports = {
   editUser,
   getRegisteredUser,
   registerUser,
-  removeUserFromEvent
+  removeUserFromEvent,
+  assignUserToken
 }
