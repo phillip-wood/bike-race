@@ -6,7 +6,6 @@
   border: 2px solid snow;
   margin: 10px auto 10px auto;
   color: #BFC0C0;
-  text-transform: uppercase;
   text-decoration: none;
   font-size: .8em;
   letter-spacing: 1.5px;
@@ -64,4 +63,13 @@ a {
   color: #2D3142;
 }
 
+.back-button {
+  height: 40px;
+  width: 100%;
+  background: none;
+  border: 0;
+  line-height: 40px;
+  color: snow;
+  text-align: center;
+}
 

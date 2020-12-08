@@ -7,16 +7,16 @@ import {postUserToEvent, delUserFromEvent} from '../actions/events'
 class EventDetails extends React.Component{
   render(){
 
-    let eventDeatils = this.props.events.find(event => event.id == this.props.match.params.id)
+    let eventDetails = this.props.events.find(event => event.id == this.props.match.params.id)
   
     const currentTime = String(new Date(Date.now()/1000 ))
-    let raceFullDate = String(new Date(eventDeatils.startTime * 1000))
+    let raceFullDate = String(new Date(eventDetails.startTime * 1000))
     let raceDate = raceFullDate.slice(0,15)
     let raceTime = raceFullDate.slice(17,21)
     let epochTime = Date.now()/1000
 
     const addUserToEvent= ()=>{
-      if(eventDeatils.attendees.length == eventDeatils.maxGroupSize){
+      if(eventDetails.attendees.length == eventDetails.maxGroupSize){
         alert('This reace is full soz')
       }else{
         const addEvent={
@@ -37,8 +37,8 @@ class EventDetails extends React.Component{
 
 
     const joinOrLeaveEvent = () =>{
-      let atendents = eventDeatils.attendees.filter(atend => atend == this.props.activeUser.id)
-      if(epochTime < eventDeatils.startTime){
+      let atendents = eventDetails.attendees.filter(atend => atend == this.props.activeUser.id)
+      if(epochTime < eventDetails.startTime){
         if(atendents.length == 0){
           return(
             <>
@@ -65,20 +65,24 @@ class EventDetails extends React.Component{
     return (
       <>
       
-      { eventDeatils && 
+      { eventDetails && 
       <div>
-      <h1 className="profilePageHeader">{eventDeatils.eventName}<br/></h1>
+      <h1 className="profilePageHeader">{eventDetails.eventName}<br/></h1>
       <div className='testmap'>
-       <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
-      <div className='content_container-event-details'>
+       <SingleEventMap start={JSON.parse(eventDetails.startPoint)} end={JSON.parse(eventDetails.endPoint)}/>
+       
+      <div className='content_container-event-details' id='event-details'>
+      <i class="fas fa-chevron-circle-down"> Event Info</i>
+        {joinOrLeaveEvent()} 
+        
+        <div className='eventDetailsInfo'>
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
-        Description: {eventDeatils.description}<br/>
-       
-        {joinOrLeaveEvent()} 
+        Description: {eventDetails.description}<br/>
+        </div>
         Attending:
         <ul >
-        {eventDeatils.attendees.map(attendent => {
+        {eventDetails.attendees.map(attendent => {
             return(
              this.props.users.map(att =>{
                if(att.id == attendent){
@@ -95,9 +99,9 @@ class EventDetails extends React.Component{
             })}
         </ul>
         <div>
-             Attendee Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
-            <Link to={`/events/${eventDeatils.id}/comments`} >
-            Comments: {eventDeatils.comments.length}
+             Attendee Limit: {eventDetails.attendees.length}/{eventDetails.maxGroupSize}<br/>
+            <Link to={`/events/${eventDetails.id}/comments`} className='attendees' >
+            Comments: {eventDetails.comments.length}
             </Link><br/>
         </div>
       </div>
