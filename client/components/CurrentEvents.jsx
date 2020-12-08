@@ -19,9 +19,8 @@ class CurrentEvents extends React.Component {
     
             if(currentTime < event.startTime){
             return (
-              <div className='event-cards'>
-                <li key={event.id} 
-                      >
+              <div key={event.id} className='event-cards'>
+                <li>
                     <Link to={`events/${event.id}`}>
                         <h2 className='eventListTitle'>{event.eventName}</h2></Link>
                         <h4>{`Date: ${raceDate}`}</h4>
