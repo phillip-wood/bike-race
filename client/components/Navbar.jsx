@@ -61,11 +61,13 @@ class Navbar extends React.Component {
                 </li>
               }
 
+              {this.props.activeUser &&
               <li className='nav-item'>
                 <Link to='/users/active' className='nav-links' onClick={this.closeMobileMenu}>
-                  {this.props.activeUser && this.props.activeUser.username}
+                  {this.props.activeUser.username}
                 </Link>
               </li>
+              }
 
               {this.props.activeUser &&
                 <li className='nav-item'>

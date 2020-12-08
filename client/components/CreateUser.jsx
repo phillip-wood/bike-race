@@ -46,18 +46,19 @@ export class CreateUser extends React.Component {
 
   handleTakePhoto = (dataUri) => {
     this.setState({imgURL: dataUri})
-    console.log(this.state);
+    
   }
   
   handleImageChange =(event)=>{
     let file = event.target.files[0]
-    console.log()
+    
     S3FileUpload.uploadFile(file, config)
     .then(data =>  this.setState({imgURL: data.location}))
     .catch(err => console.error(err))
   }
 
   render() {
+
     const { redirect } = this.state
     if (redirect) {
       return <Redirect to='/' />
