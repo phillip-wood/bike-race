@@ -73,12 +73,14 @@ export class CreateUser extends React.Component {
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" name="username"
             onChange={this.handleChange}
-            value={this.state.username} />
+            value={this.state.username} 
+            required/>
 
           <label htmlFor="email">Email:</label>
           <input type="text" id="email" name="email"
             onChange={this.handleChange}
-            value={this.state.email} />
+            value={this.state.email} 
+            required/>
           <br/>
 
 
