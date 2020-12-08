@@ -26,6 +26,7 @@ export class App extends React.Component {
   }
 
   render() {
+
     return (
       <>
         <Router>
@@ -52,7 +53,8 @@ export class App extends React.Component {
 
 function ms2p(globalState) {
   return {
-    users: globalState.users
+    users: globalState.users,
+    
   }
 }
 
