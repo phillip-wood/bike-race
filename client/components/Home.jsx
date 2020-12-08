@@ -17,7 +17,7 @@ export class Home extends React.Component {
       <div>
         <div className="homeVideo">
           <ReactPlayer
-            url="Videos/homeIntroClip2.mp4"
+            url="Videos/shortcliptest.mp4"
             className="reactPlayer"
             muted={true}
             playing={true}
