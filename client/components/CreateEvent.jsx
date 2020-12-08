@@ -79,23 +79,32 @@ class CreateEvent extends React.Component {
         <div className='form-container'>
           <form className='event-form' action="submit" onSubmit={this.handleSubmit}>
             <input type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
-            <textarea id="" cols="30" rows="5" name='description' placeholder='A brief description of your event' onChange={this.handleChange}></textarea><br/>
-            <label htmlFor="time" className='eventStartLabel'>Event time:</label><br/>
+
+            <textarea id="" cols="30" rows="5" 
+            name='description' 
+            placeholder='A brief description of your event' 
+            onChange={this.handleChange}></textarea><br />
+            
+            <label htmlFor="time" className='eventStartLabel'>Event time:</label><br />
+
             <input type="time"
               name='time'
               placeholder='time'
               defaultValue='10:00'
               onChange={this.handleTimeChange} />
+
             <input type="date"
               name='date'
               placeholder='date'
               min={this.getTodaysDate()}
               defaultValue={this.getTodaysDate()}
               onChange={this.handleTimeChange} />
-              <div className="button" id="button-5">
-            <div id="translate"></div>
-            <input type="submit" name='submit' className='actual-button'/>
+
+            <div className="button" id="button-5">
+              <div id="translate"></div>
+              <button className='actual-button'>Submit</button>
             </div>
+
           </form>
         </div>
       </>
