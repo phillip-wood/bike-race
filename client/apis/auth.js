@@ -21,7 +21,9 @@ export const registerNewUserAPI = (newUser) => {
       window.localStorage.setItem('token', res.body.token)
       return res.body.users
     })
-    .then()
+    .then(users => {
+      dispatch()
+    })
 }
 
 export const loginExistingUserAPI = (existingUser) => {

@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import S3FileUpload from 'react-s3';
 
 import { registerNewUserAPI } from '../apis/auth'
+import { TouchPitchHandler } from 'mapbox-gl';
 
 const config = {
   bucketName: 'bike-race',
@@ -36,6 +37,7 @@ export class CreateUser extends React.Component {
     evt.preventDefault()
     let newUser = { ...this.state }
     delete newUser.redirect
+    this.props.dispatch(addNewUser(newUser))
     registerNewUserAPI(newUser)
     delete newUser.password
     // need an action dispatched after the api call to set all users to globalstate
