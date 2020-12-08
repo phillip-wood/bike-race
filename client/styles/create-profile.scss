@@ -6,7 +6,7 @@
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 10px;
-  background-color: rgba($color: #bcbcbc, $alpha: 0.5);
+  background-color: rgba($color: #bcbcbc, $alpha: 1.0);
 }
 
 label{
@@ -18,13 +18,14 @@ label{
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 1%;
-  color: #bcbcbc;
+  color: black;
   padding: 3px;
 }
 
 .userInfoCP label {
   margin-bottom: 5px;
   font-size: 18px;
+  display: inline;
 }
 .userInfoCP input {
   margin: 5px auto 5px auto;
@@ -34,4 +35,5 @@ label{
 .bikeTypePP{
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 5px;
 }
