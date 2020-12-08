@@ -26,6 +26,7 @@ export class App extends React.Component {
   }
 
   render() {
+
     return (
       <>
         <Router>
@@ -42,10 +43,6 @@ export class App extends React.Component {
           </Switch>
           <Route exact path='/events' component={Events} />
           <Route exact path='/login' component={Login} />
-          {/* {this.props.users.length ?
-          <>
-          </> : null
-          } */}
         </Router>
       </>
     )
@@ -54,7 +51,8 @@ export class App extends React.Component {
 
 function ms2p(globalState) {
   return {
-    users: globalState.users
+    users: globalState.users,
+    
   }
 }
 
