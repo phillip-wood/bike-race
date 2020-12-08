@@ -69,13 +69,6 @@ export class CreateUser extends React.Component {
         <div className='infoBorderCP'>
         <form className='userInfoCP' onSubmit={this.handleSubmit}>
 
-          <label htmlFor="imgURL">profile picture</label>
-          <input className='formInput'
-            type="file"
-            onChange={this.handleImageChange}
-            name="imgURL"
-            accept="image/*"
-             />
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" name="username"
             onChange={this.handleChange}
@@ -87,8 +80,22 @@ export class CreateUser extends React.Component {
             value={this.state.email} />
           <br/>
 
-          <label htmlFor="bikeType">Bike type:</label>
-          <select id="bikeType" name="bikeType"
+
+          <label htmlFor="password">Password:</label>
+          <input type="text" id="password" name="password"
+            onChange={this.handleChange}
+            value={this.state.email} />
+          <br/>
+
+
+          <label htmlFor="confirmPassword">Confirm password:</label>
+          <input type="text" id="confirmPassword" name="confirmPassword"
+            onChange={this.handleChange}
+            value={this.state.email} />
+          <br/>
+
+          <label htmlFor="bikeType" className='bikeTypePP'>Bike type:</label>
+          <select id="bikeType" name="bikeType" className='bikeTypePP'
             onChange={this.handleChange}
             value={this.state.bikeType}>
             <option defaultValue></option>
@@ -97,6 +104,17 @@ export class CreateUser extends React.Component {
             <option value="road">Road</option>
             <option value="unicycle">Unicycle</option>
           </select>
+            <br/>
+
+          <label htmlFor="imgURL">Profile picture:</label>
+          <input className='formInput'
+            type="file"
+            onChange={this.handleImageChange}
+            name="imgURL"
+            accept="image/*"
+             />
+            <br/>
+
 
           <div className="button" id="button-5">
             <div id="translate"></div>
