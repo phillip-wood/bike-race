@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Login from './Login'
 import ReactPlayer from 'react-player'
 
 
@@ -12,6 +11,13 @@ export class Home extends React.Component {
       backgroundSize: 'cover',
       backgroundPosition: 'center center'
     }
+    // {this.props.activeUser}
+    // const showHome = () => {
+    //   return false
+      // if no one logged in - true
+      //and if not on register or login
+      // if logged in and is exact - true
+    // }
 
     return (
       <div>
