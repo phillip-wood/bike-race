@@ -100,7 +100,6 @@ class CreateEvent extends React.Component {
               name='time'
               placeholder='time'
               defaultValue={this.getTimeNow()}
-              min={this.getTimeNow()}
               onChange={this.handleTimeChange} />
 
             <input type="date"
