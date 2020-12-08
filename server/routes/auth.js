@@ -64,34 +64,38 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+  let resObj
   db.getRegisteredUser(req.body.username)
     .then(user => {
       if (user) {
-        bcrypt.compare(req.body.password, user.hash, (err, result) => {
-          if (result) {
-            const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
-            const userObj = {
-              ...user,
-              hash: user.hash
+          return bcrypt.compare(req.body.password, user.hash)
+          .then((result) => {
+            if (result) {
+              const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
+              const userObj = {
+                ...user,
+                hash: user.hash
+              }
+              delete userObj.password
+              resObj = {
+                token: token,
+                user: userObj
+              }
+              resObj.user.token = resObj.token
+              return resObj
             }
-            delete userObj.password
-            const resObj = {
-              token: token,
-              user: userObj
-            }
-            return resObj
-          } 
-        })
+          })
       } else {
         console.log('no user found')
         return res.status(500).json({ message: 'No user found' })
       }
     })
-    .then(resObj => {
-      db.assignUserToken(resObj.user.id, resObj.token)
-      return resObj
+    .then((resObj) => {
+      return db.assignUserToken(resObj.user.id, resObj.token)
     })
-    .then(resObj => res.json(resObj))
+    .then(() => {
+      res.json(resObj)
+    })
     .catch(err => {
       res.status(500).json({ message: 'Something went wrong' })
     })

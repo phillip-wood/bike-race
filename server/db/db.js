@@ -9,7 +9,7 @@ function getEvents (db = connection) {
 function addEvent (newEvent, db = connection) {
   return db('events').insert(newEvent, 'id')
     .then((ids) => {
-      return db('users_events').insert( { user_id: newEvent.creator_id, event_id: ids[0] } )
+      return db('users_events').insert({ user_id: newEvent.creator_id, event_id: ids[0] })
     })
 }
 
@@ -67,8 +67,9 @@ function getRegisteredUser (username, cb, db = connection) {
 }
 
 function assignUserToken (id, token, db = connection) {
+  // console.log(id, token)
   return db('users')
-    .insert({ token: token})
+    .update({ token: token })
     .where('id', id)
 }
 
