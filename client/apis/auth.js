@@ -18,8 +18,10 @@ export const registerNewUserAPI = (newUser) => {
     .post('/api/auth/register')
     .send(newUser)
     .then(res => {
-      window.localStorage.setItem('token', res.body)
+      window.localStorage.setItem('token', res.body.token)
+      return res.body.users
     })
+    .then()
 }
 
 export const loginExistingUserAPI = (existingUser) => {

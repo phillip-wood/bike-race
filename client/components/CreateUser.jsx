@@ -89,22 +89,12 @@ export class CreateUser extends React.Component {
 
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password"
-            onChange={this.handleChange}
-            value={this.state.password} />
+            onChange={this.handleChange} />
           <br/>
-
-
-          <label htmlFor="password">Password:</label>
-          <input type="text" id="password" name="password"
-            onChange={this.handleChange}
-            value={this.state.email} />
-          <br/>
-
 
           <label htmlFor="confirmPassword">Confirm password:</label>
-          <input type="text" id="confirmPassword" name="confirmPassword"
-            onChange={this.handleChange}
-            value={this.state.email} />
+          <input type="password" id="confirmPassword" name="confirmPassword"
+            onChange={this.handleChange} />
           <br/>
 
           <label htmlFor="bikeType" className='bikeTypePP'>Bike type:</label>

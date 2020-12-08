@@ -30,6 +30,7 @@ passport.use(new JwtStrategy(opts, (payload, done) => {
 }))
 
 router.post('/register', (req, res) => {
+  let token
   bcrypt.hash(req.body.password, saltRounds)
     .then((hash) => {
       const user = {
@@ -43,8 +44,18 @@ router.post('/register', (req, res) => {
     }).then(user => {
       db.registerUser(user)
         .then(() => {
-          const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
-          res.json(token)
+          token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
+          return token
+        })
+        .then(() => {
+          return db.getUsers()
+        })
+        .then(users => {
+          const resObj = {
+            token: token,
+            users: users
+          }
+          res.json(resObj)
         })
     })
     .catch(err => {
