@@ -6,8 +6,12 @@ import ReactPlayer from 'react-player'
 
 
 export class Home extends React.Component {
-
   render() {
+    const reactPlayerStyle = {
+      backgroundImage: 'url(/bikeImageLoad.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center'
+    }
 
     return (
       <div>
@@ -19,9 +23,12 @@ export class Home extends React.Component {
             playing={true}
             loop={true}
             controls={false}
+            poster="Videos/bikeImageLoad.jpg"
+            style={ reactPlayerStyle }
+            height="100vh"
             width="100vw"
-            height="100vw"
           />
+          
           <div className="video-overlay">
             <div className="homeInfo">
               <p name="text" id="home-info">

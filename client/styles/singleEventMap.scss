@@ -1,9 +1,9 @@
 .singleMapContainer{
   overflow:hidden;
   position: relative;
-  height: 80vh;
+  height: calc(80vh - 75px);
   width: 100vw;
-  z-index: -1;
+  z-index: 0;
 }
 .content_container{
   text-align: center;

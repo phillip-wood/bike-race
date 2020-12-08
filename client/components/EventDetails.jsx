@@ -69,12 +69,16 @@ class EventDetails extends React.Component{
       <h1 className="profilePageHeader">{eventDeatils.eventName}<br/></h1>
       <div className='testmap'>
        <SingleEventMap start={JSON.parse(eventDeatils.startPoint)} end={JSON.parse(eventDeatils.endPoint)}/>
-      <div className='content_container-event-details'>
+       
+      <div className='content_container-event-details' id='event-details'>
+      <i class="fas fa-chevron-circle-down"> Event Info</i>
+        {joinOrLeaveEvent()} 
+        
+        <div className='eventDetailsInfo'>
         Start Date: {raceDate}<br/>
         Start Time: {raceTime}<br/>
         Description: {eventDeatils.description}<br/>
-       
-        {joinOrLeaveEvent()} 
+        </div>
         Attending:
         <ul >
         {eventDeatils.attendees.map(attendent => {
@@ -95,7 +99,7 @@ class EventDetails extends React.Component{
         </ul>
         <div>
              Attendee Limit: {eventDeatils.attendees.length}/{eventDeatils.maxGroupSize}<br/>
-            <Link to={`/events/${eventDeatils.id}/comments`} >
+            <Link to={`/events/${eventDeatils.id}/comments`} className='attendees' >
             Comments: {eventDeatils.comments.length}
             </Link><br/>
         </div>
