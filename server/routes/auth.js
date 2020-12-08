@@ -64,8 +64,9 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    db.getRegisteredUser(req.body.username)
-      .then(user => {
+  db.getRegisteredUser(req.body.username)
+    .then(user => {
+      if (user) {
         bcrypt.compare(req.body.password, user.hash, (err, result) => {
           if (result) {
             const token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
@@ -78,16 +79,23 @@ router.post('/login', (req, res) => {
               token: token,
               user: userObj
             }
-            res.json(resObj)
-          } else {
-            console.log(err)
-          }
+            return resObj
+          } 
         })
-      })
-      .catch(err => {
-        res.status(500).json({ message: 'Something went wrong' })
-      })
-  })
+      } else {
+        console.log('no user found')
+        res.status(500).json({ message: 'No user found' })
+      }
+    })
+    .then(resObj => {
+      db.assignUserToken(resObj.user.id, resObj.token)
+      return resObj
+    })
+    .then(resObj => res.json(resObj))
+    .catch(err => {
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
 
 router.post('/authenticate', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json(true)

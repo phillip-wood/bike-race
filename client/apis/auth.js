@@ -1,7 +1,6 @@
 import request from 'superagent'
 
-export const checkTokenAuthenticationAPI = () => {
-  const token = window.localStorage.getItem('token')
+export const checkTokenAuthenticationAPI = (token) => {
   return request
     .post('/api/auth/authenticate')
     .set('Authorization', token)
@@ -25,8 +24,4 @@ export const loginExistingUserAPI = (existingUser) => {
     .post('/api/auth/login')
     .send(existingUser)
     .then(res => res.body)
-    // .then(res => {
-    //   window.localStorage.setItem('token', res.body)
-    //   return res.body
-    // })
 }

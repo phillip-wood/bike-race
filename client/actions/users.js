@@ -1,5 +1,5 @@
 import { fetchUsersAPI, addUserAPI, editUserAPI } from "../apis/users"
-import { registerNewUserAPI, loginExistingUserAPI } from "../apis/auth"
+import { registerNewUserAPI, loginExistingUserAPI, checkTokenAuthenticationAPI } from "../apis/auth"
 
 export const SET_USERS = 'SET_USERS'
 export const USER_ADDED = 'USER_ADDED'
@@ -48,6 +48,15 @@ export const verifyUser = (user) => {
       dispatch(changeActiveUser(obj.user))
     })
   }
+}
+
+export const checkForToken = (token) => {
+  return dispatch
+    checkTokenAuthenticationAPI(token)
+    //then we get true or false
+    .then(isAuthenticated => {
+      // dispatch(changeActiveUser(user))
+    })
 }
 
 
