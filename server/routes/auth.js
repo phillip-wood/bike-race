@@ -12,24 +12,25 @@ const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'secret'
+  secretOrKey: process.env.JWT_SECRET
 }
 
-passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-  db.getRegisteredUser({ id: jwt_payload.sub }, function (err, user) {
-    console.log('Payload: ', jwt_payload)
-    if (err) {
-      console.log(opts)
+passport.use(new JwtStrategy(opts, (payload, done) => {
+  db.getRegisteredUser(payload.sub.username)
+    .then(user => {
+      console.log('Payload: ', payload)
+      if (user) {
+        console.log('User:', opts)
+        return done(null, user)
+      } else {
+        console.log('NoUser:', opts)
+        return done(null, false)
+      }
+    })
+    .catch(err => {
+      console.log('Error: ', err)
       return done(err, false)
-    }
-    if (user) {
-      console.log(opts)
-      return done(null, user)
-    } else {
-      console.log(opts)
-      return done(null, false)
-    }
-  })
+    })
 }))
 
 router.post('/register', (req, res) => {
@@ -46,7 +47,7 @@ router.post('/register', (req, res) => {
     }).then(user => {
       db.registerUser(user)
       .then(() => {
-        const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
+        const token = 'Bearer ' + jwt.sign({sub: user}, process.env.JWT_SECRET, {expiresIn: '1d'})
         res.json(token)
       })
     })
@@ -57,12 +58,12 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login',
-(req, res, next) => {
+(req, res) => {
   db.getRegisteredUser(req.body.username)
   .then(user => {
     bcrypt.compare(req.body.password, user.hash, (err, result) => {
       if (result) {
-        const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '1d'})
+        const token = 'Bearer ' + jwt.sign({sub: user}, process.env.JWT_SECRET, {expiresIn: '1d'})
         res.json(token)
       } else {
         console.log(err)
@@ -73,6 +74,14 @@ router.post('/login',
     console.log(err)
     res.status(500).json({ message: 'Something went wrong' })
   })
+})
+
+router.post('/authenticate', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json(true)
+})
+
+router.get('/restricted', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({succeed: 'true'})
 })
 
 // passport.authenticate('jwt', { session: false }),
