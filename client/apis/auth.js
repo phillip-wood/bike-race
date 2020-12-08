@@ -25,8 +25,4 @@ export const loginExistingUserAPI = (existingUser) => {
     .post('/api/auth/login')
     .send(existingUser)
     .then(res => res.body)
-    // .then(res => {
-    //   window.localStorage.setItem('token', res.body)
-    //   return res.body
-    // })
 }
