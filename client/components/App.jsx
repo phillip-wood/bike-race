@@ -32,10 +32,11 @@ export class App extends React.Component {
         <Router>
           <Navbar />
             <Route exact path='/' component={Home} />
-            <Route exact path='/users/new' component={CreateUser} />
             <Route exact path='/login' component={Login} />
-            <AuthRoute>
               <Switch>
+                <Route exact path='/users/new' component={CreateUser} />
+            <AuthRoute>
+                <Switch>
                 <Route exact path='/users/active' component={UserProfile} />
                 <Route exact path='/users/:id' component={UserById} />
                 <Route exact path='/users/active/edit' component={EditUser} />
@@ -43,8 +44,9 @@ export class App extends React.Component {
                 <Route exact path='/events/:id' component={EventDetails} /> 
                 <Route exact path='/events/:id/comments' component={Comments}/> 
                 <Route exact path='/events' component={Events} />
-              </Switch>
+                </Switch>
             </AuthRoute>
+              </Switch>
         </Router>
       </>
     )
