@@ -6,7 +6,7 @@ import { Redirect, Link } from "react-router-dom";
 class Comments extends React.Component {
   state = {
     newComment: "",
-    redirect: false,
+    // redirect: false,
   };
 
   handleChange = (event) => {
@@ -27,11 +27,11 @@ class Comments extends React.Component {
   };
 
   render() {
-    const { redirect } = this.state;
+    // const { redirect } = this.state;
     const url = `/events/${this.props.match.params.id}`;
-    if (redirect) {
-      return <Redirect to={url} />;
-    }
+    // if (redirect) {
+    //   return <Redirect to={url} />;
+    // }
 
     //find event based on params
     let eventComments = this.props.events.find(
