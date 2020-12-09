@@ -25,3 +25,10 @@ export const loginExistingUserAPI = (existingUser) => {
     .send(existingUser)
     .then(res => res.body)
 }
+
+export const matchUserWithTokenAPI = (token) => {
+  return request
+    .get('/api/auth/match')
+    .send(token)
+    .then(res => res.body)
+}

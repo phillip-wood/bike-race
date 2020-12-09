@@ -73,6 +73,13 @@ function assignUserToken (id, token, db = connection) {
     .where('id', id)
 }
 
+function getUserByToken (token, db = connection) {
+  return db('users')
+    .select()
+    .where('token', token)
+    .first()
+}
+
 module.exports = {
   getEvents,
   getComments,
@@ -86,5 +93,6 @@ module.exports = {
   getRegisteredUser,
   registerUser,
   removeUserFromEvent,
-  assignUserToken
+  assignUserToken,
+  getUserByToken
 }
