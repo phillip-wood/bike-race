@@ -40,10 +40,10 @@ class Comments extends React.Component {
 
     return (
       <>
-      <div className="topCommentButton button" id="button-5">
+      {/* <div className="topCommentButton button" id="button-5">
           <div id="translate"></div>
         <Link className="back-button" to={url}>Back</Link>
-        </div>
+        </div> */}
         <h2 className="curretnEventsHeader">Event Comments</h2>
 
         <ul>
@@ -84,10 +84,10 @@ class Comments extends React.Component {
           </button>
         </div>
         </div>
-        <div className="bottomCommentButton button" id="button-5">
+        {/* <div className="bottomCommentButton button" id="button-5">
           <div id="translate"></div>
         <Link className="back-button" to={url}>Back</Link>
-        </div>
+        </div> */}
       </>
     );
   }

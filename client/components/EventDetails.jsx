@@ -72,7 +72,7 @@ class EventDetails extends React.Component{
        <SingleEventMap start={JSON.parse(eventDetails.startPoint)} end={JSON.parse(eventDetails.endPoint)}/>
        
       <div className='content_container-event-details' id='event-details'>
-      <i class="fas fa-chevron-circle-down"> Event Info</i>
+      <i className="fas fa-chevron-circle-down"> Event Info</i>
         {joinOrLeaveEvent()} 
         
         <div className='eventDetailsInfo'>
