@@ -6,7 +6,7 @@ import { Redirect, Link } from "react-router-dom";
 class Comments extends React.Component {
   state = {
     newComment: "",
-    redirect: false,
+    // redirect: false,
   };
 
   handleChange = (event) => {
@@ -27,11 +27,11 @@ class Comments extends React.Component {
   };
 
   render() {
-    const { redirect } = this.state;
+    // const { redirect } = this.state;
     const url = `/events/${this.props.match.params.id}`;
-    if (redirect) {
-      return <Redirect to={url} />;
-    }
+    // if (redirect) {
+    //   return <Redirect to={url} />;
+    // }
 
     //find event based on params
     let eventComments = this.props.events.find(
@@ -40,7 +40,10 @@ class Comments extends React.Component {
 
     return (
       <>
-        <Link to={url}>Back to Event</Link>
+      {/* <div className="topCommentButton button" id="button-5">
+          <div id="translate"></div>
+        <Link className="back-button" to={url}>Back</Link>
+        </div> */}
         <h2 className="curretnEventsHeader">Event Comments</h2>
 
         <ul>
@@ -77,11 +80,14 @@ class Comments extends React.Component {
               )
             }
           >
-            Submit comment
+            Submit
           </button>
         </div>
         </div>
-        <Link to={url}>Back to Event</Link>
+        {/* <div className="bottomCommentButton button" id="button-5">
+          <div id="translate"></div>
+        <Link className="back-button" to={url}>Back</Link>
+        </div> */}
       </>
     );
   }

@@ -30,16 +30,16 @@ function UserById(props) {
           {attendingEvents.map(event => {
             if (event.startTime > currentTime) {
               return (
-                <>
+                <div key={event.id}>
                   <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
-                      <li className='upcomingEventsList'>{event.eventName}</li>
+                      <li key={event.id} className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
-                </>
+                </div>
               )
             }
-          })}
+          }).reverse()}
         </div>
 
         <div className='upcomingEventsContainer'>
@@ -47,16 +47,16 @@ function UserById(props) {
           {attendingEvents.map(event => {
             if (event.startTime < currentTime) {
               return (
-                <>
+                <div key={event.id}>
                   <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
-                      <li className='upcomingEventsList'>{event.eventName}</li>
+                      <li key={event.id} className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
-                </>
+                </div>
               )
             }
-          })}
+          }).reverse()}
         </div>
       </div>
     </>

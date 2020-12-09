@@ -71,7 +71,7 @@ export class EditUser extends React.Component {
             value={this.state.email}
           />
           <br/>
-          <label htmlFor="imgURL" className='editUserLabel'>imgURL</label>
+          <label htmlFor="imgURL" className='editUserLabel'>Profile Picture:</label>
           <input className='formInput'
             type="file"
             onChange={this.handleImageChange}
@@ -79,8 +79,8 @@ export class EditUser extends React.Component {
             accept="image/*"
              />
           <br/>
-          <label htmlFor="bikeType" className='editUserLabel'>Bike type:</label>
-          <select  className='editUserInput'
+          <label htmlFor="bikeType" className='editUserLabel '>Bike type:</label>
+          <select  className='editUserInput inline'
             name="bikeType"
             onChange={this.handleChange}
             value={this.state.bikeType}>

@@ -52,7 +52,7 @@ class CreateEvent extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const str = this.state.date + ' ' + this.state.time + ' GMT+1300'
+    const str = this.state.date + ' ' + this.state.time
     const epoch = Math.floor(new Date(str) / 1000)
     const newEventObj = {
       ...this.state.newEvent,
@@ -87,7 +87,7 @@ class CreateEvent extends React.Component {
         <MainMap />
         <div className='form-container'>
           <form className='event-form' action="submit" onSubmit={this.handleSubmit}>
-            <input type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
+            <input  required type="text" name='eventName' placeholder='Event name' onChange={this.handleChange} />
 
             <textarea id="" cols="30" rows="5" 
             name='description' 
