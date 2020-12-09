@@ -69,25 +69,31 @@ export class CreateUser extends React.Component {
         <h1 className='profilePageHeader'>Create Profile</h1>
         <div className='infoBorderCP'>
         <form className='userInfoCP' onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" name="username"
-              onChange={this.handleChange}
-              value={this.state.username} />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input type="text" id="email" name="email"
-              onChange={this.handleChange}
-              value={this.state.email} />
-          </div>
+       
 
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input type="text" id="password" name="password"
-              onChange={this.handleChange}
-              value={this.state.email} />
-          </div>
+          <label htmlFor="username">Username:</label>
+          <input type="text" id="username" name="username"
+            onChange={this.handleChange}
+            value={this.state.username} 
+            required/>
+
+          <label htmlFor="email">Email:</label>
+          <input type="text" id="email" name="email"
+            onChange={this.handleChange}
+            value={this.state.email} 
+            required/>
+          <br/>
+
+
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" name="password"/>
+          <br/>
+
+
+          <label htmlFor="confirmPassword">Confirm password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword"/>
+          <br/>
+
 
           <div>
             <label htmlFor="confirmPassword">Confirm password:</label>
