@@ -1,6 +1,7 @@
 import request from 'superagent'
 
 export const checkTokenAuthenticationAPI = (token) => {
+  // console.log(token)
   return request
     .post('/api/auth/authenticate')
     .set('Authorization', token)
@@ -27,8 +28,12 @@ export const loginExistingUserAPI = (existingUser) => {
 }
 
 export const matchUserWithTokenAPI = (token) => {
+  console.log(token)
   return request
-    .get('/api/auth/match')
-    .send(token)
-    .then(res => res.body)
+    .post('/api/auth/match')
+    .send({token: token})
+    .then(res => {
+      console.log('in auth.js', res.body)
+      return res.body
+    })
 }

@@ -67,7 +67,6 @@ function getRegisteredUser (username, cb, db = connection) {
 }
 
 function assignUserToken (id, token, db = connection) {
-  // console.log(id, token)
   return db('users')
     .update({ token: token })
     .where('id', id)
