@@ -29,16 +29,16 @@ export class UserProfile extends React.Component {
             {this.attendingEvents.map(event => {
               if (event.startTime > currentTime) {
                 return (
-                  <>
+                  <div key={event.id}>
                   <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
                       <li className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
-                  </>
+                  </div>
                 )
               }
-            })}
+            }).reverse()}
           </div>
 
           <div className='upcomingEventsContainer'>
@@ -46,16 +46,16 @@ export class UserProfile extends React.Component {
             {this.attendingEvents.map(event => {
               if (event.startTime < currentTime) {
                 return (
-                  <>
+                  <div key={event.id}>
                   <ul key={event.id} >
                     <Link to={`/events/${event.id}`} className='upcomingEventsLink'>
                       <li className='upcomingEventsList'>{event.eventName}</li>
                     </Link>
                   </ul>
-                  </>
+                  </div>
                 )
               }
-            })}
+            }).reverse()}
           </div>
 
           <div className="button" id="button-5">
