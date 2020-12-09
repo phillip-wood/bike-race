@@ -41,7 +41,8 @@ router.post('/register', (req, res) => {
         bikeType: req.body.bikeType
       }
       return user
-    }).then(user => {
+    })
+    .then(user => {
       db.registerUser(user)
         .then((id) => {
           token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
@@ -58,7 +59,6 @@ router.post('/register', (req, res) => {
             token: token,
             users: users,
           }
-          console.log(resObj)
           res.json(resObj)
         })
         
@@ -111,7 +111,6 @@ router.post('/authenticate', passport.authenticate('jwt', { session: false }), (
 })
 
 router.post('/match', (req, res) => {
-  console.log(req.body)
   return db.getUserByToken(req.body.token)
   .then(user => {
       res.json(user)

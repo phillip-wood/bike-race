@@ -39,6 +39,7 @@ export class CreateUser extends React.Component {
     delete newUser.redirect
     this.props.dispatch(addNewUser(newUser))
     delete newUser.password
+    delete newUser.confirmPassword
     this.props.dispatch(changeActiveUser(newUser))
     this.setState({ redirect: true })
   }
@@ -67,38 +68,43 @@ export class CreateUser extends React.Component {
         <h1 className='profilePageHeader'>Create Profile</h1>
         <div className='infoBorderCP'>
         <form className='userInfoCP' onSubmit={this.handleSubmit}>
+       
 
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" name="username"
             onChange={this.handleChange}
-            value={this.state.username} />
+            value={this.state.username} 
+            required/>
 
           <label htmlFor="email">Email:</label>
           <input type="text" id="email" name="email"
             onChange={this.handleChange}
-            value={this.state.email} />
+            value={this.state.email} 
+            required/>
+          <br/>
+
 
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password"
-            onChange={this.handleChange} />
+          <input type="password" id="password" name="password" onChange={this.handleChange}/>
           <br/>
 
           <label htmlFor="confirmPassword">Confirm password:</label>
           <input type="password" id="confirmPassword" name="confirmPassword"
             onChange={this.handleChange} />
           <br/>
-
-          <label htmlFor="bikeType" className='bikeTypePP'>Bike type:</label>
-          <select id="bikeType" name="bikeType" className='bikeTypePP'
-            onChange={this.handleChange}
-            value={this.state.bikeType}>
-            <option defaultValue></option>
-            <option value="mountain">Mountain</option>
-            <option value="bmx">BMX</option>
-            <option value="road">Road</option>
-            <option value="unicycle">Unicycle</option>
-          </select>
-            <br/>
+          
+          <div>
+            <label htmlFor="bikeType" className='bikeTypePP'>Bike type:</label>
+            <select id="bikeType" name="bikeType" className='bikeTypePP'
+              onChange={this.handleChange}
+              value={this.state.bikeType}>
+              <option defaultValue></option>
+              <option value="mountain">Mountain</option>
+              <option value="bmx">BMX</option>
+              <option value="road">Road</option>
+              <option value="unicycle">Unicycle</option>
+            </select>
+          </div>
 
           <label htmlFor="imgURL">Profile picture:</label>
           <input className='formInput'

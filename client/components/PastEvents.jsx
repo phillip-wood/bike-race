@@ -24,14 +24,14 @@ class PastEvents extends React.Component {
                 <div key={event.id} className='event-cards'>
                   <li className='event--li'>
                     <Link to={`events/${event.id}`}>
-                      <h2>{event.eventName}</h2></Link>
+                      <h2 className='eventListTitle'>{event.eventName}</h2></Link>
                     <h4>{`Date ${raceDate}`}</h4>
                     <h4>{`Time ${raceTime}`}</h4>
                   </li>
                 </div>
               )
             }
-          })}
+          }).reverse()}
         </ul>
       </>
     )

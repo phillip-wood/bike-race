@@ -27,36 +27,44 @@ class Login extends React.Component {
 
   render() {
     const { redirect } = this.state
-    if(redirect){
+    if (redirect) {
       return <Redirect to='/' />
     }
 
     return (
       <>
-      <div className='formDiv'>
-        <form action="" onSubmit={this.handleSubmit} className='loginForm'>
-        <h5 className='loginHeader'>Login to enter a race!</h5>
-          <input type="text"
-            name='username'
-            placeholder='Username'
-            onChange={this.handleChange} />
-          <input type="text"
-            name='email'
-            placeholder='Email'
-            onChange={this.handleChange} />
-          <input type="password"
-            name='password'
-            placeholder='password'
-            onChange={this.handleChange} />
-          <input type="submit" className='formSubmit'/>
-        </form>
+        <div className='formDiv'>
+          <form action="" onSubmit={this.handleSubmit} className='loginForm'>
+            <h5 className='loginHeader'>Login</h5>
+            <label htmlFor="username">Username:</label>
+            <input type="text"
+              name='username'
+              placeholder='Username'
+              onChange={this.handleChange} />
+            <label htmlFor="email">Email:</label>
+            <input type="text"
+              name='email'
+              placeholder='Email'
+              onChange={this.handleChange} />
+
+            <label htmlFor="password">Password:</label>
+            <input type="password"
+              name='password'
+              placeholder='password'
+              onChange={this.handleChange} />
+
+            <div className="button" id="button-5">
+              <div id="translate"></div>
+              <button type="submit" className='actual-button'>Sign in</button>
+            </div>
+          </form>
         </div>
       </>
     )
   }
 }
 
-function ms2p(globalState){
+function ms2p(globalState) {
   return {
     users: globalState.users,
     activeUser: globalState.activeUser
