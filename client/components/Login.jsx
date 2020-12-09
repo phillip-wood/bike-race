@@ -36,21 +36,20 @@ class Login extends React.Component {
         <div className='formDiv'>
             <h5 className='loginHeader'>Login</h5>
           <form action="" onSubmit={this.handleSubmit} className='loginForm'>
+
             <label htmlFor="username">Username:</label>
             <input type="text"
               name='username'
-              placeholder='Username'
               onChange={this.handleChange} />
-            <label htmlFor="email">Email:</label>
+
+            {/* <label htmlFor="email">Email:</label>
             <input type="text"
               name='email'
-              placeholder='Email'
-              onChange={this.handleChange} />
+              onChange={this.handleChange} /> */}
 
             <label htmlFor="password">Password:</label>
             <input type="password"
               name='password'
-              placeholder='password'
               onChange={this.handleChange} />
 
             <div className="button" id="button-5">
