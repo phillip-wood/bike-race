@@ -87,6 +87,9 @@ export const changeActiveUser = user => {
 }
 
 export const removeActiveUser = () => {
+  console.log(window.localStorage)
+  delete window.localStorage.token
+  console.log(window.localStorage)
   return {
     type: ACTIVE_USER_REMOVED,
   }
