@@ -47,16 +47,21 @@ router.post('/register', (req, res) => {
           token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
           return token
         })
+        // .then(token => {
+        //   return db.assignUserToken(user.id, token)
+        // })
         .then(() => {
           return db.getUsers()
         })
         .then(users => {
           const resObj = {
             token: token,
-            users: users
+            users: users,
           }
+          console.log(resObj)
           res.json(resObj)
         })
+        
     })
     .catch(err => {
       res.status(500).json({ message: 'Something went wrong' })
