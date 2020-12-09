@@ -43,13 +43,13 @@ router.post('/register', (req, res) => {
       return user
     }).then(user => {
       db.registerUser(user)
-        .then(() => {
+        .then((id) => {
           token = 'Bearer ' + jwt.sign({ sub: user }, process.env.JWT_SECRET, { expiresIn: '1d' })
-          return token
+          return id
         })
-        // .then(token => {
-        //   return db.assignUserToken(user.id, token)
-        // })
+        .then(id => {
+          return db.assignUserToken(id[0], token)
+        })
         .then(() => {
           return db.getUsers()
         })
