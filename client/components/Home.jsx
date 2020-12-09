@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player'
 export class Home extends React.Component {
   render() {
     const reactPlayerStyle = {
-      backgroundImage: 'url(/bikeImageLoad.jpg)',
+      backgroundImage: 'url(/bikeImgLoad8.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center center'
     }
@@ -23,7 +23,7 @@ export class Home extends React.Component {
       <div>
         <div className="homeVideo">
           <ReactPlayer
-            url="Videos/shortcliptest.mp4"
+            url="Videos/bikeVid4.mp4"
             className="reactPlayer"
             muted={true}
             playing={true}

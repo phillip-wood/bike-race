@@ -42,19 +42,25 @@ class Login extends React.Component {
       <>
       <div className='formDiv'>
         <form action="" onSubmit={this.handleSubmit} className='loginForm'>
-        <h5 className='loginHeader'>Login to enter a race!</h5>
+        <h5 className='loginHeader'>Login</h5>
+        <label htmlFor="username">Username:</label>
           <input type="text"
             name='username'
             placeholder='Username'
             onChange={this.handleChange} />
+            <label htmlFor="email">Email:</label>
           <input type="text"
             name='email'
             placeholder='Email'
             onChange={this.handleChange} />
+            <label htmlFor="password">Password:</label>
           <input type="password"
             name='password'
             placeholder='password' />
-          <input type="submit" className='formSubmit'/>
+            <div className="button" id="button-5">
+            <div id="translate"></div>
+          <button type="submit" className='actual-button'>Sign in</button>
+          </div>
         </form>
         </div>
       </>
