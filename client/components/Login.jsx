@@ -34,8 +34,8 @@ class Login extends React.Component {
     return (
       <>
         <div className='formDiv'>
-          <form action="" onSubmit={this.handleSubmit} className='loginForm'>
             <h5 className='loginHeader'>Login</h5>
+          <form action="" onSubmit={this.handleSubmit} className='loginForm'>
             <label htmlFor="username">Username:</label>
             <input type="text"
               name='username'
