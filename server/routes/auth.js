@@ -105,4 +105,13 @@ router.post('/authenticate', passport.authenticate('jwt', { session: false }), (
   res.json(true)
 })
 
+router.get('/match', (req, res) => {
+  return db.getUserByToken(req.body)
+  .then(user => res.json(user))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({ message: 'Somthing went wrong' })
+  })
+})
+
 module.exports = router
