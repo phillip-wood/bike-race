@@ -31,7 +31,7 @@ class PastEvents extends React.Component {
                 </div>
               )
             }
-          })}
+          }).reverse()}
         </ul>
       </>
     )

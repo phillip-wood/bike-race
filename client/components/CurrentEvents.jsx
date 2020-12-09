@@ -28,7 +28,7 @@ class CurrentEvents extends React.Component {
                 </li>
               </div>
             )
-            }})}
+            }}).reverse()}
         </ul>
       </div>
     )
