@@ -7,6 +7,7 @@ exports.up = (knex) => {
       table.integer('eventsAttended')
       table.string('bikeType')
       table.string('hash')
+      table.text('token')
     })
   }
   

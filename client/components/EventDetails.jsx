@@ -12,7 +12,7 @@ class EventDetails extends React.Component{
     const currentTime = String(new Date(Date.now()/1000 ))
     let raceFullDate = String(new Date(eventDetails.startTime * 1000))
     let raceDate = raceFullDate.slice(0,15)
-    let raceTime = raceFullDate.slice(17,21)
+    let raceTime = raceFullDate.slice(16,21)
     let epochTime = Date.now()/1000
 
     const addUserToEvent= ()=>{

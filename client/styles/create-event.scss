@@ -1,5 +1,5 @@
 .event-form {
-  background-color: #bcbcbc;
+  background-color: #2D3142;
   bottom: 0vh;
   height: auto;
   padding-top: 8px;
@@ -18,7 +18,7 @@
 @media screen and (min-width: 764px) {
   .event-form {
     width: 50%;
-    background-color: #bcbcbc;
+    background-color: #2D3142;
     bottom: 0vh;
     height: auto;
     padding-top: 8px;
@@ -37,6 +37,6 @@
 }
 
 .eventStartLabel{
-  margin-bottom: 15px;
-  color: #2D3142;
+  margin-bottom: 0;
+  color: #f2f2f2;
 }
