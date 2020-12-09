@@ -28,12 +28,8 @@ export const loginExistingUserAPI = (existingUser) => {
 }
 
 export const matchUserWithTokenAPI = (token) => {
-  console.log(token)
   return request
     .post('/api/auth/match')
     .send({token: token})
-    .then(res => {
-      console.log('in auth.js', res.body)
-      return res.body
-    })
+    .then(res => res.body)
 }

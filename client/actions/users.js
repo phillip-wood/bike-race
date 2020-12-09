@@ -50,14 +50,12 @@ export const verifyUser = (user) => {
 }
 
 export const checkToken = (token) => {
-
   return dispatch => {
     return checkTokenAuthenticationAPI(token)
     .then(res => {
       if(res){
-        dispatch(matchUserWithTokenAPI(token))
+        matchUserWithTokenAPI(token)
           .then(user => {
-            console.log('in user.js', user)
             return dispatch(changeActiveUser(user))
           })
       }

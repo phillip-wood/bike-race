@@ -23,7 +23,6 @@ export class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchEvents())
     this.props.dispatch(fetchUsers())
-    console.log(window.localStorage.token)
     if(window.localStorage.token){
       this.props.dispatch(checkToken(window.localStorage.token))
     }
