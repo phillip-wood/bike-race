@@ -9,7 +9,7 @@ function getEvents (db = connection) {
 function addEvent (newEvent, db = connection) {
   return db('events').insert(newEvent, 'id')
     .then((ids) => {
-      return db('users_events').insert( { user_id: newEvent.creator_id, event_id: ids[0] } )
+      return db('users_events').insert({ user_id: newEvent.creator_id, event_id: ids[0] })
     })
 }
 
@@ -55,6 +55,30 @@ function addComment (comment, db = connection) {
   return db('comments').insert(comment, 'id')
 }
 
+// --------------- AUTH FUNCS -------------------
+function registerUser (newUser, db = connection) {
+  return db('users').insert(newUser)
+}
+
+function getRegisteredUser (username, cb, db = connection) {
+  return db('users').select()
+    .where('username', username)
+    .first()
+}
+
+function assignUserToken (id, token, db = connection) {
+  return db('users')
+    .update({ token: token })
+    .where('id', id)
+}
+
+function getUserByToken (token, db = connection) {
+  return db('users')
+    .select()
+    .where('token', token)
+    .first()
+}
+
 module.exports = {
   getEvents,
   getComments,
@@ -65,5 +89,9 @@ module.exports = {
   addComment,
   addUserToEvent,
   editUser,
-  removeUserFromEvent
+  getRegisteredUser,
+  registerUser,
+  removeUserFromEvent,
+  assignUserToken,
+  getUserByToken
 }

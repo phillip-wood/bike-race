@@ -5,6 +5,9 @@ import { Redirect } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 import S3FileUpload from 'react-s3';
 
+import { registerNewUserAPI } from '../apis/auth'
+import { TouchPitchHandler } from 'mapbox-gl';
+
 const config = {
   bucketName: 'bike-race',
   dirName: 'photos', /* optional */
@@ -18,6 +21,7 @@ export class CreateUser extends React.Component {
     imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
     username: '',
     email: '',
+    password: '',
     bikeType: '',
     redirect: false
   }
@@ -34,14 +38,10 @@ export class CreateUser extends React.Component {
     let newUser = { ...this.state }
     delete newUser.redirect
     this.props.dispatch(addNewUser(newUser))
+    delete newUser.password
+    delete newUser.confirmPassword
     this.props.dispatch(changeActiveUser(newUser))
-    this.setState({
-      imgURL: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png',
-      username: '',
-      email: '',
-      bikeType: '',
-      redirect: true
-    })
+    this.setState({ redirect: true })
   }
 
   handleTakePhoto = (dataUri) => {
@@ -51,7 +51,6 @@ export class CreateUser extends React.Component {
   
   handleImageChange =(event)=>{
     let file = event.target.files[0]
-    
     S3FileUpload.uploadFile(file, config)
     .then(data =>  this.setState({imgURL: data.location}))
     .catch(err => console.error(err))
@@ -86,12 +85,12 @@ export class CreateUser extends React.Component {
 
 
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password"/>
+          <input type="password" id="password" name="password" onChange={this.handleChange}/>
           <br/>
 
-
           <label htmlFor="confirmPassword">Confirm password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword"/>
+          <input type="password" id="confirmPassword" name="confirmPassword"
+            onChange={this.handleChange} />
           <br/>
           
           <div>

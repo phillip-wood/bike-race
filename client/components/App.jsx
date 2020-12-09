@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../actions/events'
-import { fetchUsers } from '../actions/users'
+import { fetchUsers, checkToken } from '../actions/users'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
@@ -23,6 +23,9 @@ export class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchEvents())
     this.props.dispatch(fetchUsers())
+    if(window.localStorage.token){
+      this.props.dispatch(checkToken(window.localStorage.token))
+    }
   }
 
   render() {

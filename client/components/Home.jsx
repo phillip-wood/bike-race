@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 
-
 export class Home extends React.Component {
   render() {
     const reactPlayerStyle = {
