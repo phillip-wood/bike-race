@@ -55,6 +55,7 @@ router.post('/register', (req, res) => {
             token: token,
             users: users
           }
+          console.log(resObj)
           res.json(resObj)
         })
     })
