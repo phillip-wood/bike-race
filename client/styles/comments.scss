@@ -20,7 +20,7 @@
 }
 
 .comment-box {
-  max-width: 90%;
+  max-width: 80%;
   height: 41px;
   display: flex;
   margin: 0 auto;
@@ -28,15 +28,39 @@
 
 .comment-field {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    height: 39px;
 }
 
 .sub-comment-btn h2 {
   margin-bottom: 20px;
 }
 
+.topCommentButton {
+  display: flex;
+  margin: 20px 0px 0px 20px;
+  width: 100px;
+  z-index: 100;
+  justify-content: center;
+  color: #fff;
+}
+
+.bottomCommentButton {
+    display: flex;
+    margin: 40px 0px 0px 40px;
+    width: 100px;
+    z-index: 100;
+    justify-content: center;
+    color: #fff;
+  }
 @media (min-width: 600px) {
   .comment-cards {
     width: 20%;
   }
 }
+
+@media (min-width: 600px) {
+    .comment-box {
+      width: 25%;
+    }
+  }

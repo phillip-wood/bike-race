@@ -40,7 +40,10 @@ class Comments extends React.Component {
 
     return (
       <>
-        <Link to={url}>Back to Event</Link>
+      <div className="topCommentButton button" id="button-5">
+          <div id="translate"></div>
+        <Link className="back-button" to={url}>Back</Link>
+        </div>
         <h2 className="curretnEventsHeader">Event Comments</h2>
 
         <ul>
@@ -77,11 +80,14 @@ class Comments extends React.Component {
               )
             }
           >
-            Submit comment
+            Submit
           </button>
         </div>
         </div>
-        <Link to={url}>Back to Event</Link>
+        <div className="bottomCommentButton button" id="button-5">
+          <div id="translate"></div>
+        <Link className="back-button" to={url}>Back</Link>
+        </div>
       </>
     );
   }
