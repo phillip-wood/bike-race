@@ -5,6 +5,7 @@ import { fetchUsers, checkToken } from '../actions/users'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './Home'
+
 import Navbar from './Navbar'
 import CreateEvent from './CreateEvent'
 import Events from './Events'
